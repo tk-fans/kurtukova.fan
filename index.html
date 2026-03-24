@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Татьяна Куртукова - Фан-страница</title>
+    <style>
+        /* شێوازی دیزاینەکە (CSS) */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        /* بەشی سەرەوە (هیدەر) */
+        header {
+            /* لێرەدا دەتوانیت لینکی وێنەیەکی 4K ی تاتیانا دابنێیت بۆ باکگراوەندەکە */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1516280440503-625ee2d242ef?q=80&w=3840&auto=format&fit=crop') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            color: #ffcccc; /* ڕەنگێکی سووری کاڵ کە لەگەڵ ستایلی فۆلکلۆری دەگونجێت */
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        p.subtitle {
+            font-size: 1.8rem;
+            font-style: italic;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #ff4d4d;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ff4d4d;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-center {
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            color: #cccccc;
+        }
+
+        /* بەشی گەلەری وێنەکان */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.08); /* جووڵەی زوومکردن لەکاتی چوونە سەر وێنەکە */
+        }
+
+        /* بەشی خوارەوە (فوتەر) */
+        footer {
+            background-color: #0d0d0d;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Татьяна Куртукова</h1>
+        <p class="subtitle">Официальная Фан-страница | Лучшая народная музыка</p>
+    </header>
+
+    <div class="container section-center">
+        <section class="about">
+            <h2>О Татьяне</h2>
+            <p>
+                Татьяна Куртукова — невероятно талантливая исполнительница русской народной музыки. 
+                Её искренний голос и любовь к культуре передают всю красоту и глубину русской души. 
+                Добро пожаловать на главную фан-страницу, где собраны лучшие моменты её творчества!
+            </p>
+        </section>
+
+        <section class="gallery">
+            <h2>Галерея (4K Качество)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/3840x2160/2a0800/ffffff?text=Фото+Татьяны+1+(Вставь+свое+фото)" alt="Татьяна Куртукова">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/3840x2160/4a0000/ffffff?text=Фото+Татьяны+2+(Вставь+свое+фото)" alt="Татьяна Куртукова">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/3840x2160/1a1a1a/ffffff?text=Фото+Татьяны+3+(Вставь+свое+фото)" alt="Татьяна Куртукова">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <h3 style="font-size: 2rem; margin-bottom: 20px;">Подписывайтесь на нас</h3>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">VKontakte</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 1rem; color: #777;">Создано с любовью фанатами.</p>
+    </footer>
+
+</body>
+</html>
+
