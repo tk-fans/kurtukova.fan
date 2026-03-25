@@ -6,6 +6,9 @@
     
     <title>Галерея — Фотографии Татьяны Куртуковой</title> 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <button id="backToTop" class="back-to-top" title="Наверх">
+    <i class="fas fa-chevron-up"></i>
+    </button>
     
     <meta name="description" content="Коллекция красивых фотографий и образов Татьяны Куртуковой. Фото с концертов и официальных фотосессий.">
     <meta name="keywords" content="фото, изображения, галерея, образы, Татьяна Куртукова фото">
@@ -21,6 +24,36 @@
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
             padding: 0;
+             body {
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+}
+a, button {
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
+}
+            
+            .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(26, 5, 0, 0.8);
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* سەرەتا شاراوەیە */
+    z-index: 1500;
+    transition: 0.3s;
+}
+
+.back-to-top:hover {
+    background: #d4af37;
+    color: #1a0500;
+    transform: scale(1.1);
+}
+            
         }
 
         nav {
@@ -141,7 +174,10 @@
             padding: 40px;
             text-align: center;
         }
-    </style>
+    </style> 
+    html {
+    scroll-behavior: smooth;
+}
 </head>
 <body>
 
@@ -244,7 +280,21 @@
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
-    <script>
+    <script> 
+        const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+backToTopBtn.onclick = function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+        
         let currentImgIndex = 0;
         const images = [];
 
