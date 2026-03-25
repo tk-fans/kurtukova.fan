@@ -74,31 +74,45 @@
     <script>
         function sendMessage() {
             const inputField = document.getElementById("userInput");
+            <script>
+        function sendMessage() {
+            const inputField = document.getElementById("userInput");
             const message = inputField.value.trim();
+            const chatBox = document.getElementById("chat-box");
+
             if (message === "") return;
 
-            const chatBox = document.getElementById("chat-box");
-            
-            // پیشاندانی نامەی بەکارهێنەر لە لاپەڕەکە
+            // ١. پیشاندانی نامەی بەکارهێنەر لەناو سندوقەکەت
             chatBox.innerHTML += `<div class="message user-msg">${message}</div>`;
-            
-            // ناردنی نامەکە بۆ تیدۆ لە پشتەوە
-            if (window.tidioChatApi) {
-                window.tidioChatApi.messageFromVisitor(message);
-            }
-
             inputField.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
+
+            // ٢. ناردنی نامەکە بۆ تیدۆ (پشکنین دەکات ئایا تیدۆ ئامادەیە)
+            if (window.tidioChatApi) {
+                window.tidioChatApi.send(message); // بەکارهێنانی .send باشترە
+            } else {
+                console.log("Tidio is loading...");
+            }
         }
 
-        // وەرگرتنی وەڵام لە تیدۆ و پیشاندانی لە لاپەڕەکە
-        document.onTidioChatApiReady = function() {
+        // ٣. وەرگرتنی وەڵام لە تیدۆ و ناردنی بۆ ناو سندوقە چاتەکەمان
+        window.tidioChatApiReady = function() {
             window.tidioChatApi.on("messageFromService", function(message) {
                 const chatBox = document.getElementById("chat-box");
+                // لێرە وەڵامەکەی تیدۆ وەردەگرین و دەیخەینە ناو دیزاینەکەی خۆمان
                 chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             });
+
+            // بە زۆر شاردنەوەی ئایکۆنە خڕەکە ئەگەر دەرکەوت
+            window.tidioChatApi.hide();
         };
+
+        document.getElementById("userInput").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+    </script>
+    
 
         document.getElementById("userInput").addEventListener("keypress", (e) => {
             if (e.key === "Enter") sendMessage();
