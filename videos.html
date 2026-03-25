@@ -117,7 +117,9 @@
     </nav>
 
     <div class="main-content">
-        <h1>Видео</h1>
+        <h1>Видео</h1> 
+        <p id="video-count" style="color: #d4af37; font-weight: bold; margin-bottom: 20px;">Загрузка...</p>
+        
 
         <div class="filter-container">
             <button class="filter-btn active" id="btn-all" onclick="filterVideos('all')">Все</button>
@@ -211,6 +213,14 @@
             document.getElementById('btn-all').classList.remove('active');
             document.getElementById('btn-songs').classList.remove('active');
             document.getElementById('btn-live').classList.remove('active');
+            function updateCount() {
+    const totalVideos = document.querySelectorAll('.video-card').length;
+    document.getElementById('video-count').innerText = "Всего видео: " + totalVideos;
+}
+
+// ئەمە بانگ بکە کاتێک لاپەڕەکە دەبێتەوە
+window.onload = updateCount;
+            
 
             document.getElementById('btn-' + category).classList.add('active');
 
