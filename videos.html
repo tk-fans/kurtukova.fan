@@ -217,7 +217,6 @@
                 <h3>Ты родная мне</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc"></iframe></div>
             </div>
-
             <div class="video-card songs">
                 <h3>Русская дорога</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ"></iframe></div>
@@ -262,7 +261,6 @@
                 <h3>Русская мода</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
             </div>
-            
             <div class="video-card podcasts">
                 <h3>Интервью с Алёной</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4"></iframe></div>
@@ -326,11 +324,11 @@
         }
 
         function applyFilters() {
-            const searchTerm = document.getElementById('videoSearch').value.toLowerCase();
-            const cards = document.querySelectorAll('.video-card');
+            const searchTerm = document.getElementById('videoSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.video-grid .video-card');
 
             cards.forEach(card => {
-                const title = card.querySelector('h3').innerText.toLowerCase();
+                const title = card.querySelector('h3').textContent.toLowerCase();
                 const matchesCategory = (currentCategory === 'all' || card.classList.contains(currentCategory));
                 const matchesSearch = title.includes(searchTerm);
 
