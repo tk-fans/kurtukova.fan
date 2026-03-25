@@ -112,7 +112,85 @@
         }
     </style>
 </head>
-<body>
+<body>  
+<div id="welcome-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.5s ease; visibility: hidden; backdrop-filter: blur(8px);">
+    <div style="background: linear-gradient(135deg, rgba(26,5,0,0.95), rgba(51,10,0,0.95)); border: 2px solid #d4af37; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; transform: translateY(-50px); transition: transform 0.5s ease; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);">
+        
+        <div id="modal-icon" style="font-size: 4rem; margin-bottom: 15px; animation: bounce 2s infinite;"></div>
+        
+        <h2 id="modal-greeting-ru" style="color: #d4af37; margin: 0 0 10px 0; font-size: 1.6rem;"></h2>
+        
+        <p style="color: white; margin: 0 0 5px 0; font-size: 1.1rem;" id="modal-greeting-ku"></p>
+        <p style="color: #aaaaaa; margin: 0 0 30px 0; font-size: 0.9rem;">Добро пожаловать в ваш фан-дом в Эрбиле</p>
+        
+        <button onclick="closeModal()" style="background: #d4af37; color: #1a0500; border: none; padding: 12px 35px; font-size: 1.1rem; font-weight: bold; border-radius: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <span id="modal-btn-icon"></span>
+            <span id="modal-btn-text"></span>
+        </button>
+    </div>
+</div>
+
+<style>
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+</style>
+
+<script>
+    function initWelcomeModal() {
+        const now = new Date();
+        const hour = now.getHours();
+        
+        let ruText, kuText, icon;
+
+        if (hour >= 5 && hour < 12) {
+            ruText = "Доброе утро!"
+            icon = "☀️";
+        } else if (hour >= 12 && hour < 18) {
+            ruText = "Добрый день!"
+            icon = "🌤️";
+        } else if (hour >= 18 && hour < 22) {
+            ruText = "Добрый вечер!"
+            icon = "🌆";
+        } else {
+            ruText = "Доброй ночи!";
+            icon = "🌙";
+        }
+
+        // پڕکردنەوەی زانیارییەکانی ناو پەنجەرەکە
+        document.getElementById('modal-icon').innerText = icon;
+        document.getElementById('modal-greeting-ru').innerText = ruText;
+        document.getElementById('modal-greeting-ku').innerText = kuText;
+        
+        // پڕکردنەوەی زانیارییەکانی ناو دوگمەکە
+        document.getElementById('modal-btn-icon').innerText = icon;
+        document.getElementById('modal-btn-text').innerText = kuText;
+
+        // دەرکەوتنی پەنجەرەکە دوای یەک چرکە لە کردنەوەی سایتەکە
+        setTimeout(() => {
+            const modal = document.getElementById('welcome-modal');
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.children[0].style.transform = 'translateY(0)';
+        }, 1000);
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('welcome-modal');
+        modal.style.opacity = '0';
+        modal.children[0].style.transform = 'translateY(-50px)';
+        setTimeout(() => {
+            modal.style.display = 'none'; // بە تەواوی لایدەبات تا ڕێگری لە کلیک نەکات
+        }, 500);
+    }
+
+    // کاتێک سایتەکە لۆد دەبێت، پەنجەرەکە کارا دەبێت
+    window.addEventListener('load', initWelcomeModal);
+</script>
+    
+    
+    
 
     <div id="loader-wrapper">
         <div class="loader-circle"></div>
@@ -162,22 +240,12 @@
                 
                 <p>Несмотря на огромный успех на сцене, Татьяна уделяет большое внимание своей семье. В 2019 году она вышла замуж (её супруг работает адвокатом). Сейчас они — счастливая и крепкая семья, воспитывающая прекрасную дочь по имени <strong>Эвника Никитична</strong>.</p>
             </div>
-        </div>
+        </div> 
+        
 
     </div>
 
-    <footer>
-        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px;"><i class="fab fa-youtube"></i></a> 
-        </div>
-        
-        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px;">
-            <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
-            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
-        </div>
-            
-        <p style="color: #d4af37; font-size: 14px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p> 
+    <footer> 
         <div style="background: rgba(0,0,0,0.9); border-top: 2px solid #d4af37; padding: 30px 20px; text-align: center; margin-top: 50px;">
     <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
         
@@ -215,6 +283,20 @@
 }
 </style>
         
+        <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 35px;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 35px;"><i class="fab fa-youtube"></i></a> 
+        </div>
+        
+        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px;">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
+        </div>
+            
+        <p style="color: #d4af37; font-size: 14px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p> 
+        <div style="background: rgba(0,0,0,0.9); border-top: 2px solid #d4af37; padding: 30px 20px; text-align: center; margin-top: 50px;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+    </div>
     </footer>
 
     <script>
