@@ -55,23 +55,17 @@
 
         .news-card {
             display: flex;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid #d4af37;
             border-radius: 15px;
             margin-bottom: 30px;
             overflow: hidden;
             transition: 0.3s;
-            min-height: 250px;
-        }
-
-        .news-card:hover {
-            border-color: #ff4d4d;
-            transform: scale(1.01);
         }
 
         .news-image {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             max-width: 350px;
             border-right: 1px solid #d4af37;
         }
@@ -102,16 +96,17 @@
 
         .news-card h2 {
             color: #ffcccc;
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             font-size: 1.6rem;
         }
 
         .news-card p {
-            line-height: 1.6;
+            line-height: 1.7;
             color: #eee;
             font-size: 1rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-align: left;
+            white-space: pre-line; /* بۆ ئەوەی دێڕەکان وەک خۆیان بمێننەوە */
         }
 
         .news-footer {
@@ -123,15 +118,14 @@
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .news-card { flex-direction: column; }
-            .news-image { max-width: 100%; min-width: 100%; height: 200px; border-right: none; border-bottom: 1px solid #d4af37; }
+            .news-image { max-width: 100%; min-width: 100%; height: 250px; border-right: none; border-bottom: 1px solid #d4af37; }
         }
 
         footer {
             padding: 40px;
             text-align: center;
-            background: rgba(0,0,0,0.5);
         }
     </style>
 </head>
@@ -155,35 +149,26 @@
                 <div class="news-date">25 Марта 2026</div>
                 <h2>Концерт в рамках проекта «Песни Победы»</h2>
                 <p>
-                    4 мая 2026 года в Государственном Кремлёвском Дворце состоится масштабное музыкальное событие. 
-                    В концерте примут участие: <b>Пелагея, Татьяна Куртукова, Шаман</b> и другие звезды. 
-                    Прозвучат легендарные композиции, ставшие частью истории. Начало в 19:00.
-                </p>
-                <div class="news-footer">#ТатьянаКуртукова #ПесниПобеды #Кремль</div>
-            </div>
-        </div>
+4 мая 2026 года в Государственном Кремлёвском Дворце состоится масштабное музыкальное событие, приуроченное к 81-й годовщине Победы в Великой Отечественной войне.
 
-        <div class="news-card">
-            <div class="news-image">
-                <img src="https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png" alt="Взаимодействие">
-            </div>
-            <div class="news-content">
-                <div class="news-date">25 Марта 2026</div>
-                <h2>Взаимодействие с Татьяной Куртуковой!</h2>
-                <p>
-                    Татьяна заметила наш фан-аккаунт! Она сделала репост нашей истории. Это огромная радость для всего нашего сообщества!
+В концерте «Песни Победы» примут участие известные исполнители российской эстрады: Пелагея, Татьяна Куртукова, Шаман, Александр Маршал, Александр Буйнов, Хабиб, Виктория Дайнеко, Нилетто, Зара, Антон Токарев, Асия, Акмаль, Лок-Дог, Джанго, группа «Катюша», Миша Марвин и другие.
+
+Для зрителей прозвучат всеми любимые, легендарные композиции, ставшие неотъемлемой частью исторической памяти народа.Концерт призван сохранить память о подвиге советского народа, благодарности ветеранам и осознания великой цены мира.
+
+Организатор мероприятия — продюсерский центр «Интеграция» при поддержке Президентского фонда культурных инициатив.
+
+На концерте будет осуществляться телевизионная съемка.
+Начало в 19:00
+
+12+
                 </p>
-                <div class="news-footer">#TatyanaKurtukova #FanCommunity</div>
+                <div class="news-footer">#ТатьянаКуртукова #ПесниПобеды #Кремль #Концерт</div>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/ts_makeeva_fan" target="_blank" style="color: #E1306C; font-size: 35px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@ts_makeeva_fan" target="_blank" style="color: #FF0000; font-size: 35px;"><i class="fab fa-youtube"></i></a>
-        </div>
         <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
