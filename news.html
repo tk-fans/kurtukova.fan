@@ -25,6 +25,8 @@
         
         nav { background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center; border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000; }
         nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #ff4d4d; }
+        nav a.active { border-bottom: 2px solid #ff4d4d; padding-bottom: 5px; }
 
         .main-content { padding: 40px 20px; max-width: 900px; margin: 0 auto; }
         h1 { text-align: center; color: #d4af37; font-size: 2.5rem; }
@@ -35,22 +37,21 @@
 
         .telegram-feed { display: none; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 20px; border: 1px solid #24A1DE; }
         
-        /* چوارچێوەی تایبەت بۆ سکڕۆڵکردنی پۆستەکان */
         .tg-timeline {
-            width: 100%;
-            height: 800px;
-            overflow-y: auto;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
-            padding: 10px;
+            width: 100%; height: 800px; overflow-y: auto; border-radius: 15px;
+            background: rgba(255,255,255,0.05); padding: 10px;
         }
 
-        .news-card { background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37; border-radius: 15px; margin-bottom: 20px; overflow: hidden; display: flex; }
-        .news-image { width: 300px; }
+        .news-card { background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37; border-radius: 15px; margin-bottom: 20px; overflow: hidden; display: flex; transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); border-color: #ff4d4d; box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2); }
+        .news-image { width: 300px; flex-shrink: 0; }
         .news-image img { width: 100%; height: 100%; object-fit: cover; }
-        .news-content { padding: 20px; }
+        .news-content { padding: 20px; flex-grow: 1; }
+        .news-content h2 { color: #d4af37; margin-top: 0; }
+        .news-meta { color: #aaaaaa; font-size: 0.9rem; margin-bottom: 10px; }
+        .news-meta i { color: #d4af37; margin-right: 5px; }
 
-        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 200px; } }
+        @media (max-width: 768px) { .news-card { flex-direction: column; } .news-image { width: 100%; height: 250px; } }
     </style>
 </head>
 <body>
@@ -60,13 +61,13 @@
     <nav>
         <a href="index.html">Главная</a>
         <a href="gallery.html">Галерея</a>
-        <a href="news.html">Новости</a>
+        <a href="news.html" class="active">Новости</a>
         <a href="videos.html">Видео</a> 
-        <a href="about.html" class="active">О нас</a>
+        <a href="about.html">О нас</a>
     </nav>
 
     <div class="main-content">
-        <h1>Новости</h1>
+        <h1>Последние новости</h1>
 
         <div class="filter-container">
             <button class="filter-btn active" onclick="showCategory('all', this)">Все новости</button>
@@ -74,25 +75,45 @@
         </div>
 
         <div id="all-news">
-            <div class="news-card">
-                <div class="news-image"><img src="https://i.postimg.cc/T1PBt5nX/1774338616.jpg"></div>
+            
+            <div id="news-topscene" class="news-card">
+                <div class="news-image"><img src="https://i.postimg.cc/cL2Z3MgB/Sk632wv-Kyew.jpg" alt="Топсцена"></div>
                 <div class="news-content">
-                    <h2 style="color: #d4af37;">Песни Победы 2026</h2>
-                    <p>Концерт в Государственном Кремлёвском Дворце состоится 4 мая 2026 года.</p>
+                    <h2>Гала-концерт «Топсцена»</h2>
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 29 марта 2026</span> | 
+                        <span><i class="far fa-clock"></i> 18:00</span> | 
+                        <span><i class="fas fa-map-marker-alt"></i> Концертный зал «Москва»</span>
+                    </div>
+                    <p>
+                        Состоится крупнейшее детское музыкальное событие весны — гала-концерт «Топсцена». На сцену выйдет <strong>Татьяна Куртукова</strong> вместе с другими популярными артистами, чтобы поддержать юные дарования страны.
+                    </p>
+                    <p style="font-size: 0.85rem; color: #888;">* Официальный партнер — «Афиша».</p>
                 </div>
             </div>
+
+            <div id="news-pobeda" class="news-card">
+                <div class="news-image"><img src="https://i.postimg.cc/T1PBt5nX/1774338616.jpg" alt="Песни Победы"></div>
+                <div class="news-content">
+                    <h2>Концерт «Песни Победы»</h2>
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 4 мая 2026</span> | 
+                        <span><i class="far fa-clock"></i> 19:00</span> | 
+                        <span><i class="fas fa-map-marker-alt"></i> Государственный Кремлёвский Дворец</span>
+                    </div>
+                    <p>
+                        Масштабное музыкальное событие, приуроченное к годовщине Победы. В концерте примет участие <strong>Татьяна Куртукова</strong> и другие звезды российской эстрады. Прозвучат легендарные композиции, ставшие частью нашей истории.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <div id="telegram-feed" class="telegram-feed">
             <h2 style="text-align: center; color: #24A1DE; margin-bottom: 20px;"><i class="fab fa-telegram"></i> Прямой эфир из Telegram</h2>
             
             <div class="tg-timeline">
-                <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                        data-telegram-post="kurtukova_ts/1124" 
-                        data-width="100%" 
-                        data-color="D4AF37" 
-                        data-dark="1"></script>
-                
+                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1124" data-width="100%" data-color="D4AF37" data-dark="1"></script>
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1123" data-width="100%" data-color="D4AF37" data-dark="1"></script>
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="kurtukova_ts/1122" data-width="100%" data-color="D4AF37" data-dark="1"></script>
             </div>
@@ -104,6 +125,7 @@
     </div>
 
     <script>
+        // بەشی فلتەرکردنی هەواڵەکان و تێلیگرام
         function showCategory(category, btn) {
             const allNews = document.getElementById('all-news');
             const telegramFeed = document.getElementById('telegram-feed');
@@ -120,8 +142,25 @@
             }
         }
 
+        // بەشی شاردنەوەی ئۆتۆماتیکی (Auto-Expire)
         window.addEventListener("load", function() {
             setTimeout(() => { document.getElementById("loader-wrapper").classList.add("loader-hidden"); }, 500);
+
+            const now = new Date(); // کاتی ئێستای مۆبایل یان کۆمپیوتەرەکە دەگرێت
+
+            // پشکنین بۆ هەواڵی یەکەم (بەسەردەچێت لە 30ی 3، 2026، کاتژمێر 00:00)
+            const topsceneExpireDate = new Date('2026-03-30T00:00:00');
+            if (now >= topsceneExpireDate) {
+                const topsceneNews = document.getElementById('news-topscene');
+                if(topsceneNews) topsceneNews.style.display = 'none';
+            }
+
+            // پشکنین بۆ هەواڵی دووەم (بەسەردەچێت لە 5ی 5، 2026، کاتژمێر 00:00)
+            const pobedaExpireDate = new Date('2026-05-05T00:00:00');
+            if (now >= pobedaExpireDate) {
+                const pobedaNews = document.getElementById('news-pobeda');
+                if(pobedaNews) pobedaNews.style.display = 'none';
+            }
         });
     </script>
 </body>
