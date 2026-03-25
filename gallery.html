@@ -6,15 +6,17 @@
     
     <title>Галерея — Фотографии Татьяны Куртуковой</title> 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
-    <button id="backToTop" class="back-to-top" title="Наверх">
-    <i class="fas fa-chevron-up"></i>
-    </button>
     
     <meta name="description" content="Коллекция красивых фотографий и образов Татьяны Куртуковой. Фото с концертов и официальных фотосессий.">
     <meta name="keywords" content="фото, изображения, галерея, образы, Татьяна Куртукова фото">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover;
@@ -24,36 +26,13 @@
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
             padding: 0;
-             body {
-    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
-}
-a, button {
-    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
-}
-            
-            .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(26, 5, 0, 0.8);
-    color: #d4af37;
-    border: 2px solid #d4af37;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-    display: none; /* سەرەتا شاراوەیە */
-    z-index: 1500;
-    transition: 0.3s;
-}
+            /* Custom Cursor */
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+        }
 
-.back-to-top:hover {
-    background: #d4af37;
-    color: #1a0500;
-    transform: scale(1.1);
-}
-            
+        /* گۆڕینی ماوس بۆ لینک و دوگمەکان */
+        a, button, .image-card {
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
         }
 
         nav {
@@ -104,7 +83,6 @@ a, button {
             overflow: hidden;
             background: rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
-            cursor: pointer; /* نیشاندانی شێوەی دەست */
         }
 
         .image-card:hover {
@@ -118,7 +96,31 @@ a, button {
             display: block;
         }
 
-        /* --- Lightbox Styles --- */
+        /* Back to Top Button Style */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(26, 5, 0, 0.8);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1500;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #d4af37;
+            color: #1a0500;
+            transform: scale(1.1);
+        }
+
+        /* Lightbox Styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -148,10 +150,7 @@ a, button {
             color: #d4af37;
             font-size: 50px;
             cursor: pointer;
-            transition: 0.3s;
         }
-
-        .close-btn:hover { color: white; }
 
         .prev, .next {
             position: absolute;
@@ -162,22 +161,17 @@ a, button {
             font-weight: bold;
             cursor: pointer;
             padding: 20px;
-            transition: 0.3s;
             text-decoration: none;
         }
 
         .prev { left: 20px; }
         .next { right: 20px; }
-        .prev:hover, .next:hover { color: white; scale: 1.1; }
 
         footer {
             padding: 40px;
             text-align: center;
         }
     </style> 
-    html {
-    scroll-behavior: smooth;
-}
 </head>
 <body>
 
@@ -266,46 +260,48 @@ a, button {
         <a class="next" onclick="changeImage(1)">&#10095;</a>
     </div>
 
+    <button id="backToTop" class="back-to-top" title="Наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <footer>
         <div style="margin-bottom: 15px;">
             <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C; font-size: 30px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
             <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a>
         </div>
-
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 10px; text-align: center;">
             <p style="color: #ccc; font-size: 12px; margin-bottom: 5px;">Просмотры сайта</p>
             <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
         </div>
-
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script> 
+        // JavaScript بۆ دوگمەی گەڕانەوە بۆ سەرەوە
         const backToTopBtn = document.getElementById("backToTop");
 
-window.onscroll = function() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
-    }
-};
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
 
-backToTopBtn.onclick = function() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-};
+        backToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
         
+        // JavaScript بۆ گەلەری و لایتبۆکس
         let currentImgIndex = 0;
         const images = [];
 
         document.addEventListener("DOMContentLoaded", function() {
-            // کۆکردنەوەی لینکی هەموو وێنەکان
             const imgElements = document.querySelectorAll('.image-card img');
             imgElements.forEach((img) => {
                 images.push(img.src);
             });
 
-            // نوێکردنەوەی ژمارەی وێنەکان
             const totalPhotos = images.length;
             const countElement = document.getElementById('photo-count');
             if (countElement) {
@@ -317,12 +313,12 @@ backToTopBtn.onclick = function() {
             currentImgIndex = index;
             document.getElementById("lightbox").style.display = "flex";
             document.getElementById("lightbox-img").src = images[currentImgIndex];
-            document.body.style.overflow = "hidden"; // ڕاگرتنی سکرۆڵی سایتەکە
+            document.body.style.overflow = "hidden";
         }
 
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
-            document.body.style.overflow = "auto"; // گەڕانەوەی سکرۆڵ
+            document.body.style.overflow = "auto";
         }
 
         function changeImage(step) {
@@ -332,15 +328,12 @@ backToTopBtn.onclick = function() {
             document.getElementById("lightbox-img").src = images[currentImgIndex];
         }
 
-        // داخستن بە کلیک کردن لە دەرەوەی وێنەکە
         window.onclick = function(event) {
-            const lightbox = document.getElementById("lightbox");
-            if (event.target == lightbox) {
+            if (event.target == document.getElementById("lightbox")) {
                 closeLightbox();
             }
         }
 
-        // بەکارهێنانی کیبۆرد بۆ گۆڕینی وێنەکان
         document.addEventListener('keydown', function(e) {
             if (document.getElementById("lightbox").style.display === "flex") {
                 if (e.key === "Escape") closeLightbox();
@@ -349,6 +342,5 @@ backToTopBtn.onclick = function() {
             }
         });
     </script>
-    
 </body>
 </html>
