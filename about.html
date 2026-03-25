@@ -8,55 +8,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* --- گەڕانەوە بۆ ستایلی یەکەم --- */
         body {
             background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover; background-attachment: fixed; background-position: center;
             color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0;
-            line-height: 1.6;
         }
 
         nav {
             background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center;
             border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000;
         }
-        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 1.1rem; }
+        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         nav a:hover { color: #ff4d4d; }
         nav a.active { border-bottom: 2px solid #ff4d4d; padding-bottom: 5px; }
 
         .about-hero {
-            padding: 80px 20px; text-align: center;
+            padding: 60px 20px; text-align: center;
             background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
         }
         .profile-img {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 4px solid #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-            object-fit: cover; margin-bottom: 25px;
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 4px solid #d4af37; object-fit: cover; margin-bottom: 20px;
         }
 
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* ستایلی کارتەکان کە تەنیشت یەکن */
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;
+        }
         
         .info-card {
-            background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px;
             border: 1px solid rgba(212, 175, 55, 0.2); backdrop-filter: blur(5px);
-            margin-bottom: 30px; text-align: center;
+            text-align: center;
         }
-        .info-card h3 { color: #d4af37; margin-top: 0; font-size: 1.8rem; }
+        .info-card h3 { color: #d4af37; margin-top: 0; font-size: 1.5rem; }
 
-        .location-tag {
-            color: #d4af37; font-weight: bold; font-size: 1.1rem; margin-top: 20px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+        .instagram-btn {
+            display: inline-block; background: #E1306C; color: white;
+            padding: 12px 35px; border-radius: 30px; text-decoration: none;
+            font-weight: bold; margin-top: 20px; transition: 0.3s;
         }
+        .instagram-btn:hover { transform: scale(1.05); }
 
-        .social-link {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 12px 25px; border-radius: 30px; text-decoration: none;
-            font-weight: bold; font-size: 1.1rem; transition: 0.3s; margin: 10px;
+        footer { padding: 40px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 50px; }
+
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; }
         }
-        .instagram-btn { background: #E1306C; color: white; }
-        .telegram-btn { background: #24A1DE; color: white; }
-        .social-link:hover { transform: scale(1.05); opacity: 0.9; }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
     </style>
 </head>
 <body>
@@ -74,34 +75,29 @@
 
     <div class="about-hero">
         <img src="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Logo" class="profile-img">
-        <h1 style="font-size: 3rem; color: #d4af37; margin: 10px 0;">О нашем сообществе</h1>
-        <div class="location-tag">
+        <h1 style="color: #d4af37; margin: 0;">О нашем сообществе</h1>
+        <p style="color: #d4af37; font-weight: bold; margin-top: 10px;">
             <i class="fas fa-map-marker-alt"></i> Базируется в Эрбиле, столице Курдистана
-        </div>
+        </p>
     </div>
 
     <div class="container">
         
-        <div class="info-card">
-            <h3><i class="fas fa-history"></i> Наша История</h3>
-            <p>
-                Мы — международное фан-сообщество, посвященное творчеству Татьяны Куртуковой. Наша цель — популяризация русской народной музыки и поддержка артиста за пределами родной страны. Мы гордимся тем, что Татьяна лично видит и оценивает нашу работу, делая репосты наших публикаций в своих официальных сетях.
-            </p>
-        </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-star"></i> Наша История</h3>
+                <p>
+                    Мы — международное фан-сообщество, посвященное творчеству Татьяны Куртуковой. Наша цель — популяризация русской народной музыки и поддержка артиста за пределами родной страны. Мы гордимся тем, что Татьяна лично делает репосты наших публикаций.
+                </p>
+            </div>
 
-        <div class="info-card">
-            <h3><i class="fas fa-link"></i> Наши Социальные Сети</h3>
-            <p>
-                Следите за нами в Instagram и Telegram, чтобы не пропустить эксклюзивный контент и новости о Татьяне.
-            </p>
-            
-            <div style="margin-top: 25px;">
-                <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" class="social-link instagram-btn">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                
-                <a href="https://t.me/kurtukova_ts" target="_blank" class="social-link telegram-btn">
-                    <i class="fab fa-telegram"></i> Telegram Канал
+            <div class="info-card">
+                <h3><i class="fas fa-id-badge"></i> Связь с нами</h3>
+                <p>
+                    Как администратор этого сообщества в Эрбиле, я поддерживаю прямую связь с Татьяной Куртуковой. Следите за нашим официальным фан-аккаунтом в Instagram для самых свежих обновлений.
+                </p>
+                <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" class="instagram-btn">
+                    <i class="fab fa-instagram"></i> Наш Instagram
                 </a>
             </div>
         </div>
@@ -110,7 +106,7 @@
 
     <footer>
         <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
-        <p style="font-size: 0.8rem; opacity: 0.5;">Управляемся из самого сердца Курдистана — Эрбиля</p>
+        <p style="font-size: 0.8rem; opacity: 0.5;">Управляемся из сердца Курдистана — Эрбиля</p>
     </footer>
 
 </body>
