@@ -60,21 +60,36 @@
         }
         .profile-img:hover { transform: scale(1.05) rotate(2deg); box-shadow: 0 0 35px rgba(212, 175, 55, 0.8); }
 
-        h1 { font-size: 3.5rem; color: #d4af37; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
-        .subtitle { font-size: 1.5rem; font-style: italic; color: #ffcccc; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; color: #d4af37; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+        .subtitle { font-size: 1.2rem; font-style: italic; color: #ffcccc; margin-bottom: 40px; }
 
-        /* --- Countdown Styling --- */
+        /* --- Countdown Styling (Optimized for Mobile) --- */
         .new-song-alert {
             background: rgba(26, 5, 0, 0.85); border: 2px solid #d4af37;
-            border-radius: 20px; padding: 25px; margin: 30px auto; max-width: 600px;
+            border-radius: 20px; padding: 20px 10px; margin: 20px auto; max-width: 90%;
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
-        .new-song-alert h3 { color: #d4af37; margin-top: 0; font-size: 1.4rem; letter-spacing: 1px; }
-        .song-name { color: #fff; font-size: 1.8rem; font-weight: bold; margin: 10px 0; text-shadow: 0 0 10px #d4af37; }
-        .timer-grid { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .timer-item { background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 12px; min-width: 75px; border: 1px solid rgba(212, 175, 55, 0.3); }
-        .timer-item span { display: block; font-size: 2rem; font-weight: bold; color: #fff; }
-        .timer-item p { margin: 5px 0 0; font-size: 0.8rem; color: #d4af37; text-transform: uppercase; }
+        .new-song-alert h3 { color: #d4af37; margin-top: 0; font-size: 1rem; letter-spacing: 1px; }
+        .song-name { color: #fff; font-size: 1.4rem; font-weight: bold; margin: 5px 0; text-shadow: 0 0 10px #d4af37; }
+        
+        .timer-grid { 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            margin-top: 15px; 
+            flex-wrap: nowrap; 
+        }
+        .timer-item { 
+            background: rgba(212, 175, 55, 0.1); 
+            padding: 10px 5px; 
+            border-radius: 12px; 
+            flex: 1;
+            min-width: 65px;
+            max-width: 80px;
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+        }
+        .timer-item span { display: block; font-size: 1.4rem; font-weight: bold; color: #fff; }
+        .timer-item p { margin: 5px 0 0; font-size: 0.6rem; color: #d4af37; text-transform: uppercase; }
 
         .bio-section {
             padding: 50px 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37;
@@ -89,6 +104,12 @@
         .bio-info p { line-height: 1.8; color: #eee; font-size: 1.15rem; margin-bottom: 15px; text-align: justify; }
         
         footer { padding: 40px 20px; text-align: center; margin-top: 50px; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .timer-item span { font-size: 1.2rem; }
+            .timer-item p { font-size: 0.55rem; }
+        }
     </style>
 </head>
 <body>
@@ -164,7 +185,6 @@
         });
 
         // Countdown Timer Logic
-        // کاتی بڵاوبوونەوە: هەینی 27/3/2026 کاتژمێر 00:00
         const releaseDate = new Date("March 27, 2026 00:00:00").getTime();
 
         const x = setInterval(function() {
