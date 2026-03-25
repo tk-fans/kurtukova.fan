@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Видео — Клипы, концерты и подкасты Татьяны Куртуковой</title> 
+    <title>Видео — Клипы и концерты Татьяны Куртуковой</title> 
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
     
-    <meta name="description" content="Смотрите последние видео-клипы, записи живых выступлений и подкасты Татьяны Куртуковой онлайн.">
-    <meta name="keywords" content="видео, клипы, выступления, подкасты, интервью, Татьяна Куртукова">
+    <meta name="description" content="Смотрите последние video-клипы и записи живых выступлений Татьяны Куртуковой онлайн.">
+    <meta name="keywords" content="видео, клипы, выступления, живой звук, Татьяна Куртукова видео">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -59,50 +59,35 @@
             padding: 5px 20px;
             border-radius: 20px;
         }
-
-        /* ستایلی بەشی گەڕان */
         .search-container {
-            margin-bottom: 30px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
+            margin-bottom: 25px;
         }
-        .search-container input {
+        .search-box {
             width: 100%;
-            padding: 12px 45px 12px 20px;
+            max-width: 400px;
+            padding: 12px 20px;
             border-radius: 25px;
             border: 2px solid #d4af37;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             color: white;
-            font-size: 1rem;
             outline: none;
-            transition: 0.3s;
+            font-size: 1rem;
         }
-        .search-container input:focus {
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            background: rgba(0, 0, 0, 0.8);
+        .search-box::placeholder {
+            color: rgba(212, 175, 55, 0.6);
         }
-        .search-container i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #d4af37;
-        }
-
         .filter-container {
             margin-bottom: 40px;
             display: flex;
             justify-content: center;
+            gap: 15px;
             flex-wrap: wrap;
-            gap: 10px;
         }
         .filter-btn {
             background: rgba(212, 175, 55, 0.1);
             border: 2px solid #d4af37;
             color: #d4af37;
-            padding: 8px 25px;
+            padding: 10px 30px;
             cursor: pointer;
             border-radius: 30px;
             font-weight: bold;
@@ -124,11 +109,6 @@
             padding: 15px;
             display: flex;
             flex-direction: column;
-            transition: 0.3s;
-        }
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
         }
         .video-card.hidden {
             display: none !important;
@@ -168,18 +148,17 @@
         <p id="video-count">Всего видео: ...</p>
 
         <div class="search-container">
-            <input type="text" id="videoSearch" placeholder="Поиск видео..." onkeyup="filterVideos()">
-            <i class="fas fa-search"></i>
+            <input type="text" id="videoSearch" class="search-box" placeholder="Поиск видео..." onkeyup="searchVideos()">
         </div>
 
         <div class="filter-container">
-            <button class="filter-btn active" id="btn-all" onclick="setCategory('all')">Все</button>
-            <button class="filter-btn" id="btn-songs" onclick="setCategory('songs')">Песни</button>
-            <button class="filter-btn" id="btn-live" onclick="setCategory('live')">Концерты</button>
-            <button class="filter-btn" id="btn-podcast" onclick="setCategory('podcast')">Подкасты</button>
+            <button class="filter-btn active" id="btn-all" onclick="filterVideos('all')">Все</button>
+            <button class="filter-btn" id="btn-songs" onclick="filterVideos('songs')">Песни</button>
+            <button class="filter-btn" id="btn-live" onclick="filterVideos('live')">Концерты</button>
+            <button class="filter-btn" id="btn-podcasts" onclick="filterVideos('podcasts')">Подкасты</button>
         </div>
 
-        <div class="video-grid" id="videoGrid">
+        <div class="video-grid">
             <div class="video-card songs">
                 <h3>Матушка</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM"></iframe></div>
@@ -192,22 +171,65 @@
                 <h3>Одного</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk"></iframe></div>
             </div>
-
-            <div class="video-card live">
-                <h3>Русская мода (Live)</h3>
-                <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
+            <div class="video-card songs">
+                <h3>Наливное яблочко</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us"></iframe></div>
             </div>
-
-            <div class="video-card podcast">
-                <h3>Интервью на Радио</h3>
+            <div class="video-card songs">
+                <h3>Ты родная мне</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc"></iframe></div>
             </div>
-            <div class="video-card podcast">
-                <h3>Подкаст о фольклоре</h3>
+
+            <div class="video-card songs">
+                <h3>Русская дорога</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Алёшенька</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/Y7eUnLp06Wc"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Синяя вода</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/PCUkAElegn4"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Боже, какой пустяк</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/xaFcSmxXRFM"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Два берега</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/yeJ49noQrmE"></iframe></div>
             </div>
-
+            <div class="video-card songs">
+                <h3>С добром</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/gmwTT9XT6uY"></iframe></div>
             </div>
+            <div class="video-card songs">
+                <h3>Синий платочек</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/_b9uxElesn0"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Я любила сокола</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/HatE6O4gpMc"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Озёра синие</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/7CVuGLed6MA"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>У истока</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM"></iframe></div>
+            </div>
+            <div class="video-card live">
+                <h3>Русская мода</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
+            </div>
+            
+            <div class="video-card podcasts">
+                <h3>Интервью с Алёной</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4"></iframe></div>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -225,33 +247,49 @@
     <script>
         let currentCategory = 'all';
 
-        // فانکشنی دیاریکردنی جۆر (گۆرانی، لایڤ، پۆدکاست)
-        function setCategory(category) {
-            currentCategory = category;
+        function updateVideoCount() {
+            const allCards = document.querySelectorAll('.video-card');
+            const visibleCards = document.querySelectorAll('.video-card:not(.hidden)');
+            const countElement = document.getElementById('video-count');
             
-            // گۆڕینی ستایلی دوگمەکان
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + category).classList.add('active');
-            
-            filterVideos();
+            if (allCards.length === visibleCards.length) {
+                countElement.innerText = "Всего видео: " + allCards.length;
+            } else {
+                countElement.innerText = "Найдено: " + visibleCards.length;
+            }
         }
 
-        // فانکشنی سەرەکی بۆ فلتەرکردن و گەڕان بەیەکەوە
-        function filterVideos() {
-            const searchQuery = document.getElementById('videoSearch').value.toLowerCase();
+        function filterVideos(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + category).classList.add('active');
+            applyFilters();
+        }
+
+        function searchVideos() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('videoSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.video-card');
-            let visibleCount = 0;
 
             cards.forEach(card => {
                 const title = card.querySelector('h3').innerText.toLowerCase();
                 const matchesCategory = (currentCategory === 'all' || card.classList.contains(currentCategory));
-                const matchesSearch = title.includes(searchQuery);
+                const matchesSearch = title.includes(searchTerm);
 
                 if (matchesCategory && matchesSearch) {
                     card.classList.remove('hidden');
-                    visibleCount++;
                 } else {
                     card.classList.add('hidden');
                 }
             });
-        
+
+            updateVideoCount();
+        }
+
+        document.addEventListener("DOMContentLoaded", updateVideoCount);
+    </script>
+</body>
+</html>
