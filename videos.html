@@ -58,5 +58,171 @@
             background: rgba(212, 175, 55, 0.1);
             border: 2px solid #d4af37;
             color: #d4af37;
-            padding
-            
+            padding: 10px 30px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #d4af37;
+            color: #1a0500;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .video-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-card.hidden {
+            display: none !important;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        h3 { color: #d4af37; margin: 15px 0; font-size: 1.1rem; }
+        footer { padding: 40px; text-align: center; }
+        .social-icons a { color: #d4af37; font-size: 2.2rem; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="news.html">Новости</a>
+        <a href="videos.html">Видео</a>
+    </nav>
+
+    <div class="main-content">
+        <h1>Видео</h1>
+
+        <div class="filter-container">
+            <button class="filter-btn active" id="btn-all" onclick="filterVideos('all')">Все</button>
+            <button class="filter-btn" id="btn-songs" onclick="filterVideos('songs')">Песни</button>
+            <button class="filter-btn" id="btn-live" onclick="filterVideos('live')">Концерты</button>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card songs">
+                <h3>Матушка</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Ромашка Василёк</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Одного</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Наливное яблочко</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Ты родная мне</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc"></iframe></div>
+            </div>
+
+            <div class="video-card songs">
+                <h3>Русская дорога</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Алёшенька</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/Y7eUnLp06Wc"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Синяя вода</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/PCUkAElegn4"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Боже, какой пустяк</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/xaFcSmxXRFM"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Два берега</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/yeJ49noQrmE"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>С добром</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/gmwTT9XT6uY"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Синий платочек</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/_b9uxElesn0"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Я любила сокола</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/HatE6O4gpMc"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>Озёра синие</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/7CVuGLed6MA"></iframe></div>
+            </div>
+            <div class="video-card songs">
+                <h3>У истока</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM"></iframe></div>
+            </div>
+            <div class="video-card live">
+                <h3>Русская мода</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons" style="margin-bottom: 20px;">
+            <a href="https://www.instagram.com/ts_makeeva_fan?igsh=MWRzZ3FzZWpjNGV6ZA==" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 15px; display: inline-block;">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
+        </div>
+        <p style="color: #d4af37; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
+
+    <script>
+        function filterVideos(category) {
+            document.getElementById('btn-all').classList.remove('active');
+            document.getElementById('btn-songs').classList.remove('active');
+            document.getElementById('btn-live').classList.remove('active');
+
+            document.getElementById('btn-' + category).classList.add('active');
+
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else if (card.classList.contains(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
