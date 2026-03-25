@@ -37,8 +37,8 @@
         .input-area input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #d4af37; background: #000; color: #fff; outline: none; }
         .input-area button { padding: 0 25px; background: #d4af37; color: #1a0500; border: none; border-radius: 12px; cursor: pointer; }
 
-        /* شاردنەوەی ئایکۆنە خڕەکەی تیدۆ */
-        #tidio-chat-iframe { display: none !important; }
+        /* شاردنەوەی تەواوەتی ئایکۆنە ئەسڵییەکەی تیدۆ */
+        #tidio-chat-iframe, .tidio-chat-widget { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 <body>
@@ -72,9 +72,18 @@
     <script src="//code.tidio.co/kxd4uklm8kp3mcqbg6ubzntmcmat1kme.js" async></script>
 
     <script>
-        function sendMessage() {
-            const inputField = document.getElementById("userInput");
-            <script>
+        // کاتێک تیدۆ ئامادە دەبێت، ئایکۆنەکەی بشارەوە
+        window.tidioChatApiReady = function() {
+            window.tidioChatApi.hide();
+            
+            // وەرگرتنی وەڵام لە تیدۆ و پیشاندانی لە دیزاینەکەی خۆمان
+            window.tidioChatApi.on("messageFromService", function(message) {
+                const chatBox = document.getElementById("chat-box");
+                chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        };
+
         function sendMessage() {
             const inputField = document.getElementById("userInput");
             const message = inputField.value.trim();
@@ -82,38 +91,18 @@
 
             if (message === "") return;
 
-            // ١. پیشاندانی نامەی بەکارهێنەر لەناو سندوقەکەت
+            // پیشاندانی نامەی بەکارهێنەر لەناو سندوقەکە
             chatBox.innerHTML += `<div class="message user-msg">${message}</div>`;
             inputField.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // ٢. ناردنی نامەکە بۆ تیدۆ (پشکنین دەکات ئایا تیدۆ ئامادەیە)
+            // ناردنی نامەکە بۆ تیدۆ بەبێ ئەوەی پەنجەرەکەی بکرێتەوە
             if (window.tidioChatApi) {
-                window.tidioChatApi.send(message); // بەکارهێنانی .send باشترە
-            } else {
-                console.log("Tidio is loading...");
+                window.tidioChatApi.messageFromVisitor(message);
             }
         }
 
-        // ٣. وەرگرتنی وەڵام لە تیدۆ و ناردنی بۆ ناو سندوقە چاتەکەمان
-        window.tidioChatApiReady = function() {
-            window.tidioChatApi.on("messageFromService", function(message) {
-                const chatBox = document.getElementById("chat-box");
-                // لێرە وەڵامەکەی تیدۆ وەردەگرین و دەیخەینە ناو دیزاینەکەی خۆمان
-                chatBox.innerHTML += `<div class="message bot-msg">${message}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
-
-            // بە زۆر شاردنەوەی ئایکۆنە خڕەکە ئەگەر دەرکەوت
-            window.tidioChatApi.hide();
-        };
-
-        document.getElementById("userInput").addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-    </script>
-    
-
+        // کاراکردنی دوگمەی Enter
         document.getElementById("userInput").addEventListener("keypress", (e) => {
             if (e.key === "Enter") sendMessage();
         });
