@@ -12,262 +12,93 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- لۆجیکی لۆدینگ --- */
+        /* --- Loader Logic --- */
         #loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a0500;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a0500; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
             transition: opacity 0.6s ease;
         }
-
         .loader-circle {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(212, 175, 55, 0.1);
-            border-top: 5px solid #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            width: 60px; height: 60px; border: 5px solid rgba(212, 175, 55, 0.1);
+            border-top: 5px solid #d4af37; border-radius: 50%; animation: spin 1s linear infinite;
         }
-
         .loader-text {
-            margin-top: 20px;
-            color: #d4af37;
-            font-family: 'Segoe UI', sans-serif;
-            letter-spacing: 3px;
-            font-size: 14px;
-            font-weight: bold;
-            animation: pulse 1.5s ease-in-out infinite;
+            margin-top: 20px; color: #d4af37; font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 3px; font-size: 14px; font-weight: bold; animation: pulse 1.5s ease-in-out infinite;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .loader-hidden { opacity: 0; pointer-events: none; }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatTitle { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        .loader-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* --- ئیفێکتە زیندووەکان (Animations) --- */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes floatTitle {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* Custom Cursor */
+            background-size: cover; background-attachment: fixed; background-position: center;
+            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0;
             cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
         }
 
-        a, button, .filter-btn, .video-card {
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
-        }
+        a, button, .filter-btn, .video-card { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
 
         nav {
-            background: rgba(26, 5, 0, 0.95);
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #d4af37;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center;
+            border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000;
         }
-        nav a {
-            color: #d4af37;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
+        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: 0.3s; }
         nav a:hover { color: #ff4d4d; }
 
-        .main-content {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #d4af37;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            animation: floatTitle 3s ease-in-out infinite;
-        }
+        .main-content { padding: 60px 20px; text-align: center; max-width: 1200px; margin: 0 auto; animation: fadeInUp 1s ease-out; }
+        h1 { font-size: 3rem; color: #d4af37; margin-bottom: 10px; animation: floatTitle 3s ease-in-out infinite; }
+        
         #video-count {
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-            background: rgba(212, 175, 55, 0.1);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 20px;
+            color: #d4af37; font-weight: bold; margin-bottom: 30px; font-size: 1.2rem;
+            background: rgba(212, 175, 55, 0.1); display: inline-block; padding: 5px 20px; border-radius: 20px;
         }
-        .search-container {
-            margin-bottom: 25px;
-        }
+
+        .search-container { margin-bottom: 25px; }
         .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 25px;
-            border-radius: 30px;
-            border: 2px solid #d4af37;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            outline: none;
-            font-size: 1rem;
-            transition: all 0.3s;
+            width: 100%; max-width: 400px; padding: 12px 25px; border-radius: 30px;
+            border: 2px solid #d4af37; background: rgba(0, 0, 0, 0.6); color: white; outline: none; transition: 0.3s;
         }
-        .search-box:focus {
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            background: rgba(0, 0, 0, 0.8);
-        }
-        .search-box::placeholder {
-            color: rgba(212, 175, 55, 0.6);
-        }
-        .filter-container {
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+        .search-box:focus { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+        .filter-container { margin-bottom: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .filter-btn {
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.3s;
+            background: rgba(212, 175, 55, 0.1); border: 2px solid #d4af37; color: #d4af37;
+            padding: 10px 30px; border-radius: 30px; font-weight: bold; transition: 0.3s;
         }
-        .filter-btn.active, .filter-btn:hover {
-            background: #d4af37;
-            color: #1a0500;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
+        .filter-btn.active, .filter-btn:hover { background: #d4af37; color: #1a0500; transform: translateY(-3px); }
+
         .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; margin-top: 20px;
         }
         .video-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.8); border: 2px solid #d4af37; border-radius: 15px;
+            padding: 15px; display: flex; flex-direction: column; transition: 0.4s;
         }
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
-            border-color: #ff4d4d;
-        }
-        .video-card.hidden {
-            display: none !important;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #000;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        h3 { 
-            color: #d4af37; 
-            margin: 20px 0 15px 0; 
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        .video-card:hover h3 { color: #fff; }
+        .video-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3); border-color: #ff4d4d; }
+        .video-card.hidden { display: none !important; }
+
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        h3 { color: #d4af37; margin: 20px 0 15px 0; font-size: 1.1rem; min-height: 40px; display: flex; align-items: center; justify-content: center; }
 
         .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(26, 5, 0, 0.8);
-            color: #d4af37;
-            border: 2px solid #d4af37;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            z-index: 1500;
-            transition: 0.3s;
+            position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8);
+            color: #d4af37; border: 2px solid #d4af37; width: 45px; height: 45px;
+            border-radius: 50%; display: none; z-index: 1500; transition: 0.3s;
         }
-
-        .back-to-top:hover {
-            background: #d4af37;
-            color: #1a0500;
-            transform: scale(1.1);
-        }
+        .back-to-top:hover { background: #d4af37; color: #1a0500; }
 
         footer { padding: 40px; text-align: center; }
-        .social-icons a { 
-            color: #d4af37; 
-            font-size: 2.2rem; 
-            margin: 0 15px; 
-            text-decoration: none; 
-            transition: all 0.3s; 
-            display: inline-block;
-        }
+        .social-icons a { color: #d4af37; font-size: 2.2rem; margin: 0 15px; transition: 0.3s; display: inline-block; }
         .social-icons a:hover { transform: scale(1.2); }
     </style>
 </head>
@@ -287,7 +118,7 @@
 
     <div class="main-content">
         <h1>Видео</h1> 
-        <p id="video-count">Всего видео: ...</p>
+        <p id="video-count">Загрузка...</p>
 
         <div class="search-container">
             <input type="text" id="videoSearch" class="search-box" placeholder="Поиск видео..." onkeyup="searchVideos()">
@@ -300,7 +131,7 @@
             <button class="filter-btn" id="btn-podcasts" onclick="filterVideos('podcasts')">Подкасты</button>
         </div>
 
-        <div class="video-grid">
+        <div class="video-grid" id="mainGrid">
             <div class="video-card songs">
                 <h3>Матушка</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM"></iframe></div>
@@ -361,99 +192,61 @@
                 <h3>У истока</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM"></iframe></div>
             </div>
+
             <div class="video-card live">
-                <h3>Русская мода</h3>
+                <h3>Русская мода (Live)</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/L-mYbgBO_Xw"></iframe></div>
             </div>
+
             <div class="video-card podcasts">
                 <h3>Интервью с Алёной</h3>
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4"></iframe></div>
             </div>
+            <div class="video-card podcasts">
+                <h3>Интервью с Лаурой Джугелия</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Интервью для телеканала RU.TV</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/7Je5atsAiGw"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Выступление на «Новом Радио»</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/nRpCBRvFh5A"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Интервью для «Москва 24»</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/aBBbptDVB3w"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Интервью с Заурбеком Бабаевым</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/RNWio-BJmVw"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Эксклюзив на RU.TV</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/R8u01amgxYg"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>В гостях у Love Radio</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/tu_P4hdKgeE"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Интервью для ЖАРА TV</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/aFRCFWRxVGw"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Живой концерт на «Авторадио»</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/ELbm4htrAyo"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Интервью на «Русский Хит»</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/PpVdG5RKBm4"></iframe></div>
+            </div>
+            <div class="video-card podcasts">
+                <h3>Репортаж на «Москва 24»</h3>
+                <div class="video-container"><iframe src="https://www.youtube.com/embed/rMoyAHMvpF8"></iframe></div>
+            </div>
         </div> 
-        <div class="video-card podcasts">
-    <h3>Интервью с Лаурой Джугелия (FAMETIME TV)</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>В гостях у Национального центра «Россия»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Интервью для телеканала RU.TV</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/7Je5atsAiGw"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Живое выступление и интервью на «Новом Радио»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/nRpCBRvFh5A"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Интервью для телеканала «Москва 24»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/aBBbptDVB3w"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Большое интервью с Заурбеком Бабаевым</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/RNWio-BJmVw"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Эксклюзивное интервью на RU.TV</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/R8u01amgxYg"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>В гостях у Love Radio — Красавцы +</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/tu_P4hdKgeE"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Интервью для телеканала ЖАРА TV</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/aFRCFWRxVGw"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Живой концерт на «Авторадио»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/ELbm4htrAyo"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Интервью на радио «Русский Хит»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/PpVdG5RKBm4"></iframe>
-    </div>
-</div>
-
-<div class="video-card podcasts">
-    <h3>Специальный репортаж на «Москва 24»</h3>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/rMoyAHMvpF8"></iframe>
-    </div>
-</div>
-        
     </div>
 
     <button id="backToTop" class="back-to-top" title="Наверх">
@@ -466,22 +259,19 @@
             <a href="https://youtube.com/@ts_makeeva_fan?si=IsnU9Mxi4lNI-BUe" target="_blank" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
         </div>
         <div style="margin-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); padding-top: 15px; display: inline-block;">
-            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px; font-family: sans-serif;">Просмотры сайта</p>
-            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0" title="visitor counter" alt="visitor counter">
+            <p style="color: #ccc; font-size: 12px; margin-bottom: 8px;">Просмотры сайта</p>
+            <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=l8u4m1u3u9b9q3u7z7y1r1n1b1j1k1m1" border="0">
         </div>
-        <p style="color: #d4af37; margin-top: 25px; font-family: sans-serif; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+        <p style="color: #d4af37; margin-top: 25px; font-size: 14px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
     <script>
-        // لادانی لۆدینگ
         window.addEventListener("load", function() {
             const loader = document.getElementById("loader-wrapper");
-            setTimeout(() => {
-                loader.classList.add("loader-hidden");
-            }, 800); 
+            setTimeout(() => { loader.classList.add("loader-hidden"); }, 800); 
+            updateVideoCount();
         });
 
-        // Back to Top
         const backToTopBtn = document.getElementById("backToTop");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
@@ -490,20 +280,14 @@
                 backToTopBtn.style.display = "none";
             }
         };
-        backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
+        backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
 
         let currentCategory = 'all';
 
         function updateVideoCount() {
             const visibleCards = document.querySelectorAll('.video-card:not(.hidden)');
             const countElement = document.getElementById('video-count');
-            countElement.innerText = searchTermActive() ? "Найдено: " + visibleCards.length : "Всего видео: " + visibleCards.length;
-        }
-
-        function searchTermActive() {
-            return document.getElementById('videoSearch').value.trim() !== "";
+            countElement.innerText = "Всего видео: " + visibleCards.length;
         }
 
         function filterVideos(category) {
@@ -513,13 +297,11 @@
             applyFilters();
         }
 
-        function searchVideos() {
-            applyFilters();
-        }
+        function searchVideos() { applyFilters(); }
 
         function applyFilters() {
             const searchTerm = document.getElementById('videoSearch').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.video-grid .video-card');
+            const cards = document.querySelectorAll('.video-card');
 
             cards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
@@ -532,11 +314,8 @@
                     card.classList.add('hidden');
                 }
             });
-
             updateVideoCount();
         }
-
-        document.addEventListener("DOMContentLoaded", updateVideoCount);
     </script>
 </body>
 </html>
