@@ -13,16 +13,53 @@
             background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
             background-size: cover; background-attachment: fixed; background-position: center;
             color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+        }
+        
+        a, button { cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important; }
+
+        /* --- Side Menu Styling (Добавлено) --- */
+        .menu-icon {
+            position: fixed; top: 20px; left: 20px;
+            font-size: 24px; color: #d4af37; cursor: pointer;
+            z-index: 1100; background: rgba(26, 5, 0, 0.8);
+            padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
         }
 
-        nav {
-            background: rgba(26, 5, 0, 0.95); padding: 15px; text-align: center;
-            border-bottom: 2px solid #d4af37; position: sticky; top: 0; z-index: 1000;
+        .side-menu {
+            position: fixed; top: 0; left: -50%; width: 50%; height: 100%;
+            background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
+            z-index: 1200; transition: 0.5s; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        nav a { color: #d4af37; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        nav a:hover { color: #ff4d4d; }
-        nav a.active { border-bottom: 2px solid #ff4d4d; padding-bottom: 5px; }
 
+        .side-menu.active { left: 0; }
+
+        .menu-links { width: 100%; text-align: center; }
+        .menu-links a {
+            display: block; padding: 15px; text-decoration: none;
+            font-size: 1.2rem; color: #d4af37; font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu-links a:hover, .menu-links a.active { color: #ff4d4d; transform: scale(1.1); }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 36px; color: #d4af37; cursor: pointer;
+        }
+
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; z-index: 1150;
+        }
+        .menu-overlay.active { display: block; }
+
+        @media screen and (max-width: 768px) {
+            .side-menu { width: 80%; left: -80%; }
+        }
+
+        /* --- Rest of Styles (Оригинал) --- */
         .about-hero {
             padding: 60px 20px; text-align: center;
             background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
@@ -34,7 +71,6 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        /* ستایلی کارتەکان کە تەنیشت یەکن */
         .info-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;
         }
@@ -62,17 +98,27 @@
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="news.html">Новости</a>
-        <a href="videos.html">Видео</a> 
-        <a href="quiz.html">Квиз</a>
-        <a href="about.html" class="active">О нас</a>
-        <a href="ask.html" style="color: #FFD700; border: 1px solid #FFD700; padding: 5px 12px; border-radius: 20px; margin-left: 10px;">
-            <i class="fas fa-robot"></i> AI Bot
-        </a>
-    </nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div id="sideMenu" class="side-menu">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <div class="menu-links">
+            <a href="index.html">Главная</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="news.html">Новости</a>
+            <a href="videos.html">Видео</a> 
+            <a href="quiz.html">Квиз</a>
+            <a href="about.html" class="active">О нас</a>
+            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 20px auto;">
+            <a href="ask.html" style="color: #FFD700;">
+                <i class="fas fa-robot"></i> AI Bot
+            </a>
+        </div>
+    </div>
+
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
     <div class="about-hero">
         <img src="https://i.postimg.cc/QdJ1DjCc/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Logo" class="profile-img">
@@ -109,6 +155,15 @@
         <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
         <p style="font-size: 0.8rem; opacity: 0.5;">Управляемся из сердца Курдистана — Эрбиля</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            const overlay = document.getElementById("menuOverlay");
+            menu.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+    </script>
 
 </body>
 </html>
