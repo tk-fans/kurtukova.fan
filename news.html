@@ -608,13 +608,23 @@
 
         // جێبەجێکردنی کارەکان کاتێک سایتەکە دەکرێتەوە
 
-        window.addEventListener("load", function() {
+        window.addEventListener("DOMContentLoaded", function() {
+    // یەکسەر هەواڵەکان دروست بکە لەناو پاشبنەمادا
+    renderNews();
 
-            setTimeout(() => { document.getElementById("loader-wrapper").classList.add("loader-hidden"); }, 500);
-
-            renderNews();
-
-        });
+    // دوای ٣ چرکە (٣٠٠٠ میلی چرکە) لۆدینگەکە لادە
+    setTimeout(() => { 
+        const loader = document.getElementById("loader-wrapper");
+        if (loader) {
+            loader.classList.add("loader-hidden");
+            
+            // بۆ دڵنیایی زیاتر دوای نیو چرکەی تر بە تەواوی لایببە
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 600);
+        }
+    }, 3000); 
+});
 
     </script> 
 
