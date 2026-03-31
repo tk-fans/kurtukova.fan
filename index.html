@@ -165,7 +165,20 @@
             h1 { font-size: 2rem; }
             .timer-item span { font-size: 1.2rem; }
             .timer-item p { font-size: 0.55rem; }
-        }
+        } 
+        /* ئەفێکتە ئاڵتوونییەکە */
+.particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #d4af37, #ff4d4d);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 0 10px #d4af37, 0 0 20px #ff4d4d;
+}
     </style>
 </head>
 <body>  
@@ -313,7 +326,36 @@
             const overlay = document.getElementById("menuOverlay");
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
-        }
+        } 
+        // کۆدی تەقینەوەی پڕیشکە ئاڵتوونییەکان بەدوای ماوسدا
+document.addEventListener('mousemove', function(e) {
+    // دروستکردنی پڕیشکەکە
+    let particle = document.createElement('div');
+    particle.className = 'particle';
+    document.body.appendChild(particle);
+
+    // دیاریکردنی شوێنی ماوسەکە
+    particle.style.left = e.clientX + 'px';
+    particle.style.top = e.clientY + 'px';
+
+    // قەبارەی هەڕەمەکی بۆ پڕیشکەکان
+    let size = Math.random() * 10 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // جوڵاندنی پڕیشکەکە بەرەو لایەکی هەڕەمەکی
+    let destX = (Math.random() - 0.5) * 150;
+    let destY = (Math.random() - 0.5) * 150;
+
+    // ئەنیمەیشنی تەقینەوە و ونبوون
+    particle.animate([
+        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+        { transform: translate(${destX}px, ${destY}px) scale(0), opacity: 0 }
+    ], {
+        duration: 1000 + Math.random() * 1000,
+        easing: 'cubic-bezier(0, .9, .57, 1)'
+    }).onfinish = () => particle.remove();
+});
     </script>
 </body>
 </html>
