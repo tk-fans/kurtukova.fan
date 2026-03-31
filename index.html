@@ -253,7 +253,7 @@
                 <div style="text-align: center;">
                     <i class="fas fa-citadel" style="color: #d4af37; font-size: 2rem;"></i>
                     <h4 style="margin: 5px 0; color: white;">Эрбиль</h4>
-                    <span style="color: #aaa; font-size: 0.8rem;">Курдиستان</span>
+                    <span style="color: #aaa; font-size: 0.8rem;">Курдистан</span>
                 </div>
                 <div style="flex-grow: 1; max-width: 200px; position: relative; height: 2px; background: linear-gradient(90deg, #d4af37, #ff4d4d);">
                     <i class="fas fa-heart" style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); color: #ff4d4d; animation: beat 1.5s infinite;"></i>
@@ -327,35 +327,7 @@
             menu.classList.toggle("active");
             overlay.classList.toggle("active");
         } 
-        // کۆدی تەقینەوەی پڕیشکە ئاڵتوونییەکان بەدوای ماوسدا
-document.addEventListener('mousemove', function(e) {
-    // دروستکردنی پڕیشکەکە
-    let particle = document.createElement('div');
-    particle.className = 'particle';
-    document.body.appendChild(particle);
-
-    // دیاریکردنی شوێنی ماوسەکە
-    particle.style.left = e.clientX + 'px';
-    particle.style.top = e.clientY + 'px';
-
-    // قەبارەی هەڕەمەکی بۆ پڕیشکەکان
-    let size = Math.random() * 10 + 2;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-
-    // جوڵاندنی پڕیشکەکە بەرەو لایەکی هەڕەمەکی
-    let destX = (Math.random() - 0.5) * 150;
-    let destY = (Math.random() - 0.5) * 150;
-
-    // ئەنیمەیشنی تەقینەوە و ونبوون
-    particle.animate([
-        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-        { transform: translate(${destX}px, ${destY}px) scale(0), opacity: 0 }
-    ], {
-        duration: 1000 + Math.random() * 1000,
-        easing: 'cubic-bezier(0, .9, .57, 1)'
-    }).onfinish = () => particle.remove();
-});
+     
     </script>
 </body>
 </html>
