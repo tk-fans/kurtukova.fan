@@ -112,7 +112,18 @@
 
         @media screen and (max-width: 768px) {
             .side-menu { width: 80%; left: -80%; }
-        }
+        } 
+        /* ستایل بۆ ئەنیمەیشنی کارتەکان */
+.news-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.news-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
         /* --- Gallery Styles --- */
         .gallery-container { padding: 80px 20px; text-align: center; animation: fadeInUp 1s ease-out; }
@@ -400,19 +411,31 @@
         <p style="color: #d4af37; font-size: 13px; margin-top: 20px;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var loader = document.getElementById("loader-wrapper");
-        if (loader) {
-            setTimeout(function() {
-                loader.style.transition = "opacity 0.8s ease";
-                loader.style.opacity = "0";
-                setTimeout(function() {
-                    loader.style.display = "none";
-                }, 800);
-            }, 3000); 
-        }
+    <script> 
+   // لێرەدا لۆدینگەکە تەواو دەبێت
+setTimeout(function() {
+    var loader = document.getElementById("loader-wrapper");
+    if (loader) {
+        loader.style.opacity = "0";
+        setTimeout(function() {
+            loader.style.display = "none";
+            document.body.style.overflow = "auto";
+
+            // --- لێرە زیادی بکە ---
+            revealCards(); 
+            // ---------------------
+
+        }, 800);
+    }
+}, 3000);
+    function revealCards() {
+    const cards = document.querySelectorAll('.news-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('show');
+        }, index * 200); // هەر کارتێک ٢٠٠ میلی چرکە دوای ئەوەی پێش خۆی دەردەکەوێت
     });
+}
 
         function toggleMenu() {
             const menu = document.getElementById("sideMenu");
