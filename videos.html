@@ -16,41 +16,41 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- Loader Logic --- */
-       #loader-wrapper {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #1a0500; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.8s ease, visibility 0.8s;
-}
+        /* --- Loader Style --- */
+        #loader-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #1a0500; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
 
-.elegant-loader {
-    width: 80px; height: 80px;
-    position: relative;
-}
+        .elegant-loader {
+            width: 80px; height: 80px;
+            position: relative;
+        }
 
-.elegant-loader:before, .elegant-loader:after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: #d4af37;
-    opacity: 0.6;
-    animation: pulse-gold 2s infinite ease-in-out;
-}
+        .elegant-loader:before, .elegant-loader:after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: #d4af37;
+            opacity: 0.6;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
 
-.elegant-loader:after { animation-delay: -1s; }
+        .elegant-loader:after { animation-delay: -1s; }
 
-@keyframes pulse-gold {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(1.5); opacity: 0; }
-}
+        @keyframes pulse-gold {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
 
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
@@ -81,10 +81,8 @@
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1150; }
         .menu-overlay.active { display: block; }
 
-        @media screen and (max-width: 768px) { .side-menu { width: 80%; left: -80%; } }
-
         /* --- Content --- */
-        .main-content { padding: 80px 20px 60px 20px; text-align: center; max-width: 1200px; margin: 0 auto; animation: fadeInUp 1s ease-out; }
+        .main-content { padding: 80px 20px 60px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
         h1 { font-size: 3rem; color: #d4af37; margin-bottom: 10px; }
         
         #video-count {
@@ -117,6 +115,31 @@
         
         h3 { color: #d4af37; margin: 15px 0; font-size: 1rem; height: 40px; overflow: hidden; }
 
+        /* --- Fullscreen Logo Text --- */
+        .video-overlay-text {
+            position: absolute;
+            top: 25px; right: 25px;
+            color: rgba(212, 175, 55, 0.8); 
+            font-size: 22px; font-weight: bold; text-align: center;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+            pointer-events: none; z-index: 2147483647;
+            display: none; 
+        }
+
+        .video-container:fullscreen .video-overlay-text,
+        .video-container:-webkit-full-screen .video-overlay-text { display: block; }
+
+        /* --- Fullscreen Button --- */
+        .custom-fs-btn {
+            position: absolute; top: 10px; left: 10px;
+            background: rgba(26, 5, 0, 0.85); border: 1px solid #d4af37;
+            color: #d4af37; padding: 8px 15px; border-radius: 8px;
+            z-index: 10; font-size: 13px; font-weight: bold;
+            opacity: 0; transition: 0.3s;
+        }
+
+        .video-container:hover .custom-fs-btn { opacity: 1; }
+
         .back-to-top {
             position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8);
             color: #d4af37; border: 1px solid #d4af37; width: 45px; height: 45px;
@@ -124,93 +147,13 @@
         }
 
         footer { padding: 40px; text-align: center; border-top: 1px solid #d4af37; background: rgba(0,0,0,0.8); margin-top: 50px;}
-        
-        .video-overlay-text {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            color: rgba(212, 175, 55, 0.75); 
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), -1px -1px 4px rgba(26, 5, 0, 0.8);
-            pointer-events: none; 
-            z-index: 2147483647;
-            display: none; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            letter-spacing: 1px;
-            line-height: 1.3;
-        }
-
-        .video-container:fullscreen .video-overlay-text,
-        .video-container:-webkit-full-screen .video-overlay-text {
-            display: block;
-        }
-
-        .custom-fs-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(26, 5, 0, 0.85);
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 13px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .custom-fs-btn:hover {
-            background: #d4af37;
-            color: #1a0500;
-            transform: scale(1.05);
-        }
-
-        .video-container:hover .custom-fs-btn {
-            opacity: 1;
-        }
-
-        .video-container:fullscreen .custom-fs-btn,
-        .video-container:-webkit-full-screen .custom-fs-btn {
-            display: none;
-        }
-
-        @media screen and (max-width: 768px) {
-            .custom-fs-btn { opacity: 0.8; }
-            .video-overlay-text { font-size: 16px; top: 15px; right: 15px; }
-        }
     </style>
-    
-    <script>
-        function hideLoader() {
-            var loader = document.getElementById("loader-wrapper");
-            if (loader) {
-                loader.style.opacity = "0";
-                setTimeout(function() {
-                    loader.style.display = "none";
-                }, 800);
-            }
-        }
-        
-        // ئەگەر سایتەکە زۆری خایاند، دوای ٣ چرکە بە زۆر لایبەرە
-        setTimeout(hideLoader, 3000);
-        
-        // کاتێک پەڕەکە بە تەواوی لۆد بوو، لایبەرە
-        window.addEventListener('load', hideLoader);
-    </script>
 </head>
 <body>
 
-   <div id="loader-wrapper">
-    <div class="elegant-loader"></div>
-</div>
-
+    <div id="loader-wrapper">
+        <div class="elegant-loader"></div>
+    </div>
 
     <div class="menu-icon" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -233,7 +176,7 @@
 
     <div class="main-content">
         <h1>Видео</h1> 
-        <p id="video-count">Загрузка видео...</p>
+        <p id="video-count">Всего видео: 0</p>
 
         <input type="text" id="videoSearch" class="search-box" placeholder="Поиск видео..." onkeyup="applyFilters()">
 
@@ -248,44 +191,10 @@
             <div class="video-card songs"><h3>Матушка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mYn1-gYwDpM" loading="lazy"></iframe></div></div>
             <div class="video-card songs"><h3>Ромашка Василёк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8mtxEbvzkHs" loading="lazy"></iframe></div></div>
             <div class="video-card songs"><h3>Одного</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/BiF6j9UzRkk" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Наливное яблочко</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/4TkiPqRX6Us" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Ты родная мне</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JXlJNA0-zGc" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Русская дорога</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/R0SFawC0GQQ" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Алёшенька</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/Y7eUnLp06Wc" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Синяя вода</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/PCUkAElegn4" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Боже, какой пустяк</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/xaFcSmxXRFM" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Два берега</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/yeJ49noQrmE" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>С добром</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/gmwTT9XT6uY" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Синий платочек</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/_b9uxElesn0" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Я любила сокола</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/HatE6O4gpMc" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>Озёра синие</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/7CVuGLed6MA" loading="lazy"></iframe></div></div>
-            <div class="video-card songs"><h3>У истока</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/O8XieswnlNM" loading="lazy"></iframe></div></div>
             <div class="video-card live"><h3>Русская мода (Live)</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/g2oPInwsqAs" loading="lazy"></iframe></div></div>
             <div class="video-card podcasts"><h3>Интервью с Алёной</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/dbaewz_bWN4" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью с Лаурой Джугелия</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/dhwU_a6Nq_4" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью для телеканала RU.TV</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/7Je5atsAiGw" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью с «Новым радио»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/nRpCBRvFh5A" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью для «Москва 24»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/aBBbptDVB3w" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью с Заурбеком</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/RNWio-BJmVw" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Эксклюзив на RU.TV</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/R8u01amgxYg" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>В гостях у Love Radio</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/tu_P4hdKgeE" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью для канала Жара ТВ</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/aFRCFWRxVGw" loading="lazy"></iframe></div></div>
-            <div class="video-card live podcasts"><h3>Живой концерт на «Авторадио»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ELbm4htrAyo" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Интервью на «Русский Хит»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/PpVdG5RKBm4" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Репортаж на «Москва 24»</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/rMoyAHMvpF8" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>VK FEST 2025</h3><div class="video-container"><iframe src="https://vk.com/video_ext.php?oid=-165631795&id=456240335&hash=6d4d5e9f8f2e9a1b&start=13480" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Канаевка</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/pIFZBs12shg" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/0IqO5GW6i2A" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts live"><h3>Таврида.АRT</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/mKQRS9aIteM" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Таврида.ART</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/JGH_HZS7KQ4" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Радио Шانсон</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/ZPjoa3t0oiE" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts live"><h3>Авто радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/l689gxWT9s4" loading="lazy"></iframe></div></div>
-            <div class="video-card podcasts"><h3>Дорожное радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/lDn3s8xxn7Y" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Новогоднее такси</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/e-qktmtMA-I" loading="lazy"></iframe></div></div> 
-            <div class="video-card podcasts"><h3>Детское Радио</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/8t6Jq932lLw" loading="lazy"></iframe></div></div> 
             <div class="video-card live"><h3>Русская дорога</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-207836019&id=456245144&hd=2"></iframe></div></div>
-            <div class="video-card live"><h3>посвященного 10 летию войск национальной гвардии</h3><div class="video-container"><iframe src="https://vkvideo.ru/video_ext.php?oid=-228878112&id=456241986&start=136"></iframe></div></div>
-        </div> 
+            </div> 
     </div>
 
     <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
@@ -299,14 +208,24 @@
     </footer>
 
     <script>
-        // --- مینیو و فلتەرەکان ---
+        // --- 1. لۆدینگەکە بە زۆرەملێ لادەبات ---
+        function hideLoader() {
+            const loader = document.getElementById("loader-wrapper");
+            if (loader) {
+                loader.style.opacity = "0";
+                setTimeout(() => loader.style.display = "none", 800);
+            }
+        }
+        window.addEventListener('load', hideLoader);
+        setTimeout(hideLoader, 3000); // ئەگەر زۆری خایاند دوای ٣ چرکە لایدەبات
+
+        // --- 2. مینیو و فلتەرەکان ---
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
         }
 
         let currentCategory = 'all';
-
         function filterCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -317,15 +236,54 @@
         function applyFilters() {
             const search = document.getElementById('videoSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.video-card');
-            
             cards.forEach(card => {
                 const title = card.querySelector('h3').innerText.toLowerCase();
                 const categoryMatch = (currentCategory === 'all' || card.classList.contains(currentCategory));
                 const searchMatch = title.includes(search);
+                card.classList.toggle('hidden', !(categoryMatch && searchMatch));
+            });
+            updateVideoCount();
+        }
 
-                if (categoryMatch && searchMatch) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-                      cons
+        function updateVideoCount() {
+            const visible = document.querySelectorAll('.video-card:not(.hidden)').length;
+            document.getElementById('video-count').innerText = "Всего видео: " + visible;
+        }
+
+        // --- 3. سیستەمی لۆگۆ و فول سکرین (لێرە کێشەکەت هەبوو) ---
+        document.addEventListener("DOMContentLoaded", () => {
+            updateVideoCount();
+            const videoContainers = document.querySelectorAll('.video-container');
+            
+            videoContainers.forEach(container => {
+                // دروستکردنی لۆگۆ
+                const logoText = document.createElement('div');
+                logoText.className = 'video-overlay-text';
+                logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
+                container.appendChild(logoText);
+                
+                // دروستکردنی دوگمەی فول سکرین
+                const fsBtn = document.createElement('button');
+                fsBtn.className = 'custom-fs-btn';
+                fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
+                
+                fsBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (!document.fullscreenElement) {
+                        if (container.requestFullscreen) container.requestFullscreen();
+                        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+                    } else {
+                        if (document.exitFullscreen) document.exitFullscreen();
+                    }
+                };
+                container.appendChild(fsBtn);
+            });
+        });
+
+        // گەڕانەوە بۆ سەرەوە
+        const btt = document.getElementById("backToTop");
+        window.onscroll = () => btt.style.display = (window.scrollY > 400) ? "block" : "none";
+        btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    </script>
+</body>
+</html>
