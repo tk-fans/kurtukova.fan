@@ -14,17 +14,35 @@
     <style>
         /* --- Loader Logic --- */
         #loader-wrapper {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #1a0500; display: flex; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.8s ease;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #1a0500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
         }
-        .elegant-loader { width: 80px; height: 80px; position: relative; }
+        .elegant-loader {
+            width: 80px; height: 80px;
+            position: relative;
+        }
         .elegant-loader:before, .elegant-loader:after {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border-radius: 50%; background: #d4af37; opacity: 0.6; animation: pulse-gold 2s infinite ease-in-out;
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: #d4af37;
+            opacity: 0.6;
+            animation: pulse-gold 2s infinite ease-in-out;
         }
         .elegant-loader:after { animation-delay: -1s; }
-        @keyframes pulse-gold { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        @keyframes pulse-gold {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
 
         /* --- Animations --- */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -33,79 +51,186 @@
         body {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/QCTGpSC0/New-Project-59F2DA6.png");
             background-size: cover; background-attachment: fixed; background-position: center;
-            color: white; font-family: 'Segoe UI', sans-serif; margin: 0; scroll-behavior: smooth;
+            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0;
+            cursor: auto;
+            scroll-behavior: smooth;
         }
-
+        
         /* --- Side Menu Styling --- */
         .menu-icon {
-            position: fixed; top: 20px; left: 20px; font-size: 24px; color: #d4af37; cursor: pointer;
-            z-index: 1100; background: rgba(26, 5, 0, 0.8); padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
+            position: fixed; top: 20px; left: 20px;
+            font-size: 24px; color: #d4af37; cursor: pointer;
+            z-index: 1100; background: rgba(26, 5, 0, 0.8);
+            padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
         }
+
         .side-menu {
             position: fixed; top: 0; left: -50%; width: 50%; height: 100%;
             background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
-            z-index: 1200; transition: 0.5s; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1200; transition: 0.5s; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
+
         .side-menu.active { left: 0; }
-        .menu-links a { display: block; padding: 15px; text-decoration: none; font-size: 1.2rem; color: #d4af37; font-weight: bold; transition: 0.3s; }
+
+        .menu-links a {
+            display: block; padding: 15px; text-decoration: none;
+            font-size: 1.2rem; color: #d4af37; font-weight: bold;
+            transition: 0.3s;
+        }
+
         .menu-links a:hover { color: #ff4d4d; transform: scale(1.1); }
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 36px; color: #d4af37; cursor: pointer; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1150; }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 36px; color: #d4af37; cursor: pointer;
+        }
+
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; z-index: 1150;
+        }
         .menu-overlay.active { display: block; }
 
-        /* --- Main Content --- */
         .main-content { padding: 80px 20px; text-align: center; max-width: 1000px; margin: 0 auto; animation: fadeInUp 1s ease-out; }
-        .profile-img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid #d4af37; object-fit: cover; margin-bottom: 30px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+
+        .profile-img {
+            width: 250px; height: 250px; border-radius: 50%; border: 4px solid #d4af37;
+            object-fit: cover; margin-bottom: 30px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
         h1 { font-size: 2.5rem; color: #d4af37; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
         .subtitle { font-size: 1.2rem; font-style: italic; color: #ffcccc; margin-bottom: 40px; }
 
-        /* --- Countdown --- */
-        .new-song-alert { background: rgba(26, 5, 0, 0.85); border: 2px solid #d4af37; border-radius: 20px; padding: 20px 10px; margin: 20px auto; }
+        /* --- Countdown Styling --- */
+        .new-song-alert {
+            background: rgba(26, 5, 0, 0.85); border: 2px solid #d4af37;
+            border-radius: 20px; padding: 20px 10px; margin: 20px auto; max-width: 90%;
+        }
         .timer-grid { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
         .timer-item { background: rgba(212, 175, 55, 0.1); padding: 10px 5px; border-radius: 12px; flex: 1; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timer-item span { display: block; font-size: 1.4rem; font-weight: bold; }
 
-        /* --- Concert Section (بەشی کۆنسێرتەکان) --- */
-        .concerts-container { margin: 50px 0; text-align: left; scroll-margin-top: 100px; }
-        .concert-card { background: rgba(26, 5, 0, 0.9); border: 1px solid #d4af37; border-radius: 15px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .concert-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(212, 175, 55, 0.1); }
+        /* --- Concert Section Styling (بەشی نوێی کۆنسێرتەکان) --- */
+        .concerts-container {
+            margin-top: 40px;
+            text-align: left;
+        }
+        .concert-card {
+            background: rgba(26, 5, 0, 0.9);
+            border: 1px solid #d4af37;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        /* سەردێڕی بەشەکە کە دایدەگریت */
+        .concert-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.1);
+            transition: 0.3s;
+        }
+        .concert-header:hover { background: rgba(212, 175, 55, 0.2); }
         .concert-header h3 { margin: 0; color: #d4af37; font-size: 1.3rem; }
-        .concert-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 20px; }
-        .concert-card.active .concert-body { max-height: 1000px; padding: 20px; }
-        .concert-img { flex: 1; min-width: 200px; }
-        .concert-img img { width: 100%; border-radius: 10px; border: 1px solid #d4af37; }
-        .concert-info { flex: 2; min-width: 250px; }
-        .ticket-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: #d4af37; color: #1a0500; text-decoration: none; font-weight: bold; border-radius: 25px; transition: 0.3s; }
 
-        /* --- Bio Section --- */
-        .bio-section { padding: 50px 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37; border-radius: 20px; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap; text-align: left; margin-top: 20px; }
+        /* بەشی ناوەوە کە دەکرێتەوە */
+        .concert-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .concert-card.active .concert-body {
+            max-height: 800px; /* زیادکرا بۆ ئەوەی جێگەی وێنەکە ببێتەوە */
+            padding: 20px;
+        }
+
+        /* ستایلی وێنەی ناو کۆنسێرت */
+        .concert-img {
+            flex: 1;
+            min-width: 200px;
+        }
+        .concert-img img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #d4af37;
+        }
+
+        /* ستایلی تێکستی ناو کۆنسێرت */
+        .concert-info {
+            flex: 2;
+            min-width: 250px;
+        }
+        .concert-info p { margin: 10px 0; font-size: 1rem; color: #eee; }
+        .concert-info i { color: #d4af37; margin-right: 10px; width: 20px; }
+
+        /* دوگمەی بلیت */
+        .ticket-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #d4af37;
+            color: #1a0500;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .ticket-btn:hover { background: #fff; transform: scale(1.05); }
+
+        .bio-section {
+            padding: 50px 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid #d4af37;
+            border-radius: 20px; display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap;
+            text-align: left; margin-top: 20px;
+        }
+        
         .bio-image-square img { width: 100%; max-width: 280px; border-radius: 10px; border: 2px solid #d4af37; }
         .bio-info { flex: 2; }
         
         footer { padding: 40px 20px; text-align: center; }
 
-        @media screen and (max-width: 768px) { .side-menu { width: 80%; left: -80%; } }
+        @media (max-width: 768px) {
+            .side-menu { width: 80%; left: -80%; }
+            .concert-body { flex-direction: column; }
+        }
     </style>
 </head>
 <body>  
 
     <div id="loader-wrapper"><div class="elegant-loader"></div></div>
 
+    <div id="welcome-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.5s ease; visibility: hidden; backdrop-filter: blur(8px);">
+        <div style="background: linear-gradient(135deg, rgba(26,5,0,0.95), rgba(51,10,0,0.95)); border: 2px solid #d4af37; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; transform: translateY(-50px); transition: transform 0.5s ease;">
+            <div id="modal-icon" style="font-size: 4rem; margin-bottom: 15px;"></div>
+            <h2 id="modal-greeting-ru" style="color: #d4af37; margin-bottom: 10px;"></h2>
+            <p style="color: #aaaaaa; margin-bottom: 30px;">Добро пожаловать в ваш фан-дом</p>
+            <button onclick="closeModal()" style="background: #d4af37; color: #1a0500; border: none; padding: 12px 35px; font-weight: bold; border-radius: 30px; cursor: pointer;">OK</button>
+        </div>
+    </div>
+
     <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     <div id="sideMenu" class="side-menu">
         <div class="close-btn" onclick="toggleMenu()">&times;</div>
         <div class="menu-links">
             <a href="index.html">Главная</a>
-            <a href="#concerts" onclick="toggleMenu()">Концерты</a> 
             <a href="gallery.html">Галерея</a>
             <a href="news.html">Новости</a>
-            <a href="videos.html">Видео</a>
+            <a href="videos.html">Видео</a> 
+            <a href="quiz.html">Квиз</a>
             <a href="about.html">О нас</a>
         </div>
     </div>
     <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
     <div class="main-content">
-        <img src="https://i.postimg.cc/L5yBY6Tc/New-Project-833-E8598F3.png" class="profile-img">
+        <img src="https://i.postimg.cc/L5yBY6Tc/New-Project-833-E8598F3.png" class="profile-img" alt="Татьяна Куртукова">
         <h1>Татьяна Куртукова</h1>
         <p class="subtitle">Добро пожаловать на фан-сайт</p>
 
@@ -119,7 +244,7 @@
             </div>
         </div>
 
-        <div id="concerts" class="concerts-container">
+        <div class="concerts-container">
             <h2 style="color: #d4af37; border-bottom: 2px solid #d4af37; display: inline-block; margin-bottom: 20px;">Предстоящие Концерты</h2>
             
             <div class="concert-card">
@@ -129,12 +254,31 @@
                 </div>
                 <div class="concert-body">
                     <div class="concert-img">
-                        <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" alt="Concert">
+                        <img src="https://i.postimg.cc/MHJ2vSR4/New-Project-830-5E91960.png" alt="Concert Image">
                     </div>
                     <div class="concert-info">
-                        <p><i class="fas fa-calendar-alt"></i> 4 Мая, 2026</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Крокус Сити Холл, Москва</p>
-                        <p>Присоединяйтесь к нам на незабываемом вечере русской музыки.</p>
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Дата:</strong> 4 Мая, 2026</p>
+                        <p><i class="fas fa-clock"></i> <strong>Время:</strong> 19:00</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Место:</strong> Крокус Сити Холл, Москва</p>
+                        <p>Присоединяйтесь к нам на незабываемом вечере русской музыки и патриотических песен в исполнении Татьяны Куртуковой.</p>
+                        <a href="#" class="ticket-btn">Купить Билет</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concert-card">
+                <div class="concert-header" onclick="this.parentElement.classList.toggle('active')">
+                    <h3>Творческий вечер — Санкт-Петербург</h3>
+                    <i class="fas fa-chevron-down" style="color: #d4af37;"></i>
+                </div>
+                <div class="concert-body">
+                    <div class="concert-img">
+                        <img src="https://i.postimg.cc/L5yBY6Tc/New-Project-833-E8598F3.png" alt="Concert Image">
+                    </div>
+                    <div class="concert-info">
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Дата:</strong> 20 Июня, 2026</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Место:</strong> БКЗ «Октябрьский»</p>
+                        <p>Большой сольный концерт с участием приглашенных артистов и народных коллективов.</p>
                         <a href="#" class="ticket-btn">Купить Билет</a>
                     </div>
                 </div>
@@ -147,25 +291,53 @@
             </div>
             <div class="bio-info">
                 <h2>Биография</h2>
-                <p>Татьяна Сергеевна Макеева (Татьяна Куртукова) — символ современной русской народной песни.</p>
+                <p>Татьяна Сергеевна Макеева (Татьяна Куртукова) — символ современной русской народной песни. Её голос и талант объединяют миллионы сердец.</p>
             </div>
         </div> 
     </div>
 
+    <footer> 
+        <div style="background: rgba(0,0,0,0.9); border-top: 2px solid #d4af37; padding: 30px 20px;">
+            <p>&copy; 2026 Tatyana Kurtukova Fan Community</p> 
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+                <a href="https://www.instagram.com/ts_makeeva_fan" target="_blank" style="color: #E1306C; font-size: 30px;"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ts_makeeva_fan" target="_blank" style="color: #FF0000; font-size: 30px;"><i class="fab fa-youtube"></i></a> 
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Modal & Loader Logic
         window.addEventListener("load", function() {
+            initWelcomeModal();
+            const loader = document.getElementById("loader-wrapper");
             setTimeout(() => {
-                const loader = document.getElementById("loader-wrapper");
                 loader.style.opacity = "0";
                 setTimeout(() => { loader.style.display = "none"; }, 800);
             }, 3000);
         });
+
+        function initWelcomeModal() {
+            const hour = new Date().getHours();
+            let ruText = (hour < 12) ? "Доброе утро!" : (hour < 18) ? "Добрый день!" : "Добрый вечер!";
+            document.getElementById('modal-icon').innerText = (hour < 18) ? "☀️" : "🌙";
+            document.getElementById('modal-greeting-ru').innerText = ruText;
+            setTimeout(() => {
+                const modal = document.getElementById('welcome-modal');
+                modal.style.visibility = 'visible';
+                modal.style.opacity = '1';
+                modal.children[0].style.transform = 'translateY(0)';
+            }, 1000);
+        }
+
+        function closeModal() { document.getElementById('welcome-modal').style.display = 'none'; }
 
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
         }
 
+        // Countdown Logic
         const releaseDate = new Date("May 4, 2026 19:00:00").getTime();
         setInterval(function() {
             const distance = releaseDate - new Date().getTime();
