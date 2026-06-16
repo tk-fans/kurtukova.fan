@@ -252,8 +252,92 @@
 
         <div id="edits" class="content-section">
             <h2>Эдиты</h2>
-            <p>لێرە کۆدی ناوەڕۆکی بەشی ئیدیتەکان دابنێ...</p>
+<p>جوانترین ئیدیتەکانی تاتیانا لێرەوە ببینە</p>
+
+<div class="edits-grid">
+    
+    <div class="edit-card">
+        <div class="video-wrapper">
+            <video controls preload="metadata">
+                <source src="New Project 906 [85A9686].mp4" type="video/mp4">
+                وێبگەڕەکەت پشتگیری ئەم ڤیدیۆیە ناکات.
+            </video>
         </div>
+        <div class="edit-info">
+            <h3>Создано: <span class="author-name">ts_makeeva_fan</span></h3>
+        </div>
+    </div>
+
+    <div class="edit-card">
+        <div class="video-wrapper">
+            <video controls preload="metadata">
+                <source src="بەستەری_ڤیدیۆی_دووەم.mp4" type="video/mp4">
+                وێبگەڕەکەت پشتگیری ئەم ڤیدیۆیە ناکات.
+            </video>
+        </div>
+        <div class="edit-info">
+            <h3>Создано: <span class="author-name">لێرە ناوی کەسەکە بنووسە</span></h3>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .edits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+    }
+
+    .edit-card {
+        background: rgba(26, 5, 0, 0.6);
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        border-radius: 15px;
+        padding: 12px;
+        transition: 0.3s ease;
+        overflow: hidden;
+    }
+
+    .edit-card:hover {
+        border-color: #d4af37;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+    }
+
+    .video-wrapper {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #000;
+        aspect-ratio: 16 / 9; /* بۆ ڤیدیۆی ئاسایی، ئەگەر ڤیدیۆکان ڕاست (Vertical) بوون بیکە بە 9 / 16 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .edit-info {
+        padding-top: 12px;
+        text-align: center;
+    }
+
+    .edit-info h3 {
+        font-size: 0.95rem;
+        color: #aaaaaa;
+        margin: 0;
+    }
+
+    .author-name {
+        color: #d4af37;
+        font-weight: bold;
+    }
+</style>
 
     </div>
 
