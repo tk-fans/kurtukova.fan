@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медиа Центр — Официальный сайт поклонников Татьяны Куртуковой</title> 
+
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- Loader Force Hide --- */
+        #loader-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #1a0500; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .elegant-loader {
+            width: 80px; height: 80px;
+            position: relative;
+        }
+
+        .elegant-loader:before, .elegant-loader:after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: #d4af37;
+            opacity: 0.6;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+
+        .elegant-loader:after { animation-delay: -1s; }
+
+        @keyframes pulse-gold {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* --- Page Styles --- */
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://i.postimg.cc/L50vY6Kf/New-Project-59F2DA6.png");
+            background-size: cover; background-attachment: fixed; background-position: center;
+            color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto !important;
+        }
+
+        .menu-icon {
+            position: fixed; top: 20px; left: 20px;
+            font-size: 24px; color: #d4af37; cursor: pointer;
+            z-index: 1100; background: rgba(26, 5, 0, 0.8);
+            padding: 10px 15px; border-radius: 8px; border: 1px solid #d4af37;
+        }
+
+        .side-menu {
+            position: fixed; top: 0; left: -100%; width: 280px; height: 100%;
+            background: rgba(26, 5, 0, 0.98); border-right: 2px solid #d4af37;
+            z-index: 1200; transition: 0.4s; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .side-menu.active { left: 0; }
+        .menu-links a { display: block; padding: 15px; text-decoration: none; font-size: 1.2rem; color: #d4af37; font-weight: bold; transition: 0.3s; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1150; }
+        .menu-overlay.active { display: block; }
+
+        .main-content { padding: 120px 20px 80px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 3rem; color: #d4af37; margin-bottom: 40px; }
+
+        /* --- گڕیدی ٤ چوارگۆشەکە --- */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .hub-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            padding: 30px 20px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hub-card:hover, .hub-card.active-card {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            background: rgba(26, 5, 0, 0.85);
+        }
+
+        .hub-icon-container {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.5);
+        }
+
+        .hub-icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hub-card h3 {
+            color: #d4af37;
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        /* --- بەشە شاردراوەکان لە ژێرەوە --- */
+        .content-section {
+            display: none; /* لە سەرەتادا هەموو بەشەکان شاردراونەتەوە */
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active-section {
+            display: block; /* تەنها ئەو بەشە پیشان دەدات کە کلیکی لێکراوە */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section h2 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .back-to-top {
+            position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8);
+            color: #d4af37; border: 1px solid #d4af37; width: 45px; height: 45px;
+            border-radius: 50%; display: none; cursor: pointer;
+        }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #d4af37; background: rgba(0,0,0,0.8); margin-top: 100px;}
+    </style>
+
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById("loader-wrapper");
+            if(loader) {
+                loader.style.opacity = "0";
+                setTimeout(() => { loader.style.display = "none"; }, 500);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", hideLoader);
+        setTimeout(hideLoader, 2000);
+    </script>
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="elegant-loader"></div>
+    </div>
+
+    <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+    <div id="sideMenu" class="side-menu">
+        <div class="menu-links">
+            <a href="index.html">Главная</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="news.html">Новости</a>
+            <a href="videos.html">Видео</a> 
+            <a href="quiz.html">Квиз</a>
+            <hr style="border: 0.5px dashed #d4af37; width: 80%; margin: 10px 0;">
+            <a href="ask.html" style="color: #FFD700;">AI Bot</a>
+        </div>
+    </div>
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+    <div class="main-content">
+        <h1>Медиа Центр</h1> 
+
+        <div class="hub-grid">
+            
+            <div class="hub-card" onclick="showContent('skinpacks', this)">
+                <div class="hub-icon-container">
+                    <img src="" alt="Скинпаки">
+                </div>
+                <h3>Скинпаки</h3>
+            </div>
+
+            <div class="hub-card" onclick="showContent('wallpapers', this)">
+                <div class="hub-icon-container">
+                    <img src="" alt="Обои">
+                </div>
+                <h3>Обои</h3>
+            </div>
+
+            <div class="hub-card" onclick="showContent('music', this)">
+                <div class="hub-icon-container">
+                    <img src="" alt="Музыка и плейлисты">
+                </div>
+                <h3>Музыка и плейлисты</h3>
+            </div>
+
+            <div class="hub-card" onclick="showContent('edits', this)">
+                <div class="hub-icon-container">
+                    <img src="" alt="Эдиты">
+                </div>
+                <h3>Эдиты</h3>
+            </div>
+
+        </div> 
+
+        <div id="skinpacks" class="content-section">
+            <h2>Скинпаки</h2>
+            <p>لێرە کۆدی ناوەڕۆکی بەشی سکن پاکەکان دابنێ...</p>
+        </div>
+
+        <div id="wallpapers" class="content-section">
+            <h2>Обои</h2>
+            <p>لێرە کۆدی ناوەڕۆکی بەشی واڵپەیپەرەکان دابنێ...</p>
+        </div>
+
+        <div id="music" class="content-section">
+            <h2>Музыка и плейлисты</h2>
+            <p>لێرە کۆدی ناوەڕۆکی بەشی میوزیک و گۆرانییەکان دابنێ...</p>
+        </div>
+
+        <div id="edits" class="content-section">
+            <h2>Эдиты</h2>
+            <p>لێرە کۆدی ناوەڕۆکی بەشی ئیدیتەکان دابنێ...</p>
+        </div>
+
+    </div>
+
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <footer>
+        <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
+    </footer>
+
+    <script>
+        // مینیو
+        function toggleMenu() {
+            document.getElementById("sideMenu").classList.toggle("active");
+            document.getElementById("menuOverlay").classList.toggle("active");
+        }
+
+        // سکریپتی گۆڕینی بەشەکان بەبێ گۆڕینی لاپەڕە
+        function showContent(sectionId, cardElement) {
+            // شاردنەوەی هەموو بەشەکان
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // لادانی ستایلی ئەکتیڤ لەسەر هەموو چوارگۆشەکان
+            document.querySelectorAll('.hub-card').forEach(card => {
+                card.classList.remove('active-card');
+            });
+
+            // پیشاندانی بەشە دیاریکراوەکە
+            document.getElementById(sectionId).classList.add('active-section');
+            
+            // هێشتنەوەی ستایلی چوارگۆشە کلیک لێکراوەکە بە ئەکتیڤی
+            cardElement.classList.add('active-card');
+
+            // هێنانە خوارەوەی شاشەکە بۆ سەر بەشە نوێیەکە بە نەرمی
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // گەڕانەوە بۆ سەرەوە
+        const btt = document.getElementById("backToTop");
+        window.onscroll = () => btt.style.display = (window.scrollY > 400) ? "block" : "none";
+        btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    </script>
+</body>
+</html>
