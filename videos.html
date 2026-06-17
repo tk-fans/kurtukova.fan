@@ -229,7 +229,7 @@
         <p style="color: #d4af37;">&copy; 2026 Tatyana Kurtukova Fan Community</p>
     </footer>
 
-    <script>
+        <script>
         // --- 1. مینیو و فلتەرەکان ---
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
@@ -262,49 +262,40 @@
         }
 
         // --- 2. سیستەمی لۆگۆ و فول سکرین ---
-        // --- ئەم بەشە لە ناو سکریپتەکەتدا بەمە بگۆڕە ---document.addEventListener("DOMContentLoaded", () => {
-    const videoContainers = document.querySelectorAll('.video-container');
-    
-    videoContainers.forEach(container => {
-        // دروستکردنی لۆگۆ
-        const logoText = document.createElement('div');
-        logoText.className = 'video-overlay-text';
-        logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
-        container.appendChild(logoText);
-        
-        // دروستکردنی دوگمەی فول سکرین
-        const fsBtn = document.createElement('button');
-        fsBtn.className = 'custom-fs-btn';
-        fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
-        
-        fsBtn.onclick = (e) => {
-            e.stopPropagation();
+        document.addEventListener("DOMContentLoaded", () => {
+            const videoContainers = document.querySelectorAll('.video-container');
             
-            if (!document.fullscreenElement && 
-                !document.webkitFullscreenElement && 
-                !document.msFullscreenElement) {
+            videoContainers.forEach(container => {
+                // دروستکردنی لۆگۆ
+                const logoText = document.createElement('div');
+                logoText.className = 'video-overlay-text';
+                logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
+                container.appendChild(logoText);
                 
-                // بردنە ناو فول سکرینی تەواوی کۆنتێنەرەکە بۆ ئەوەی یوتیوب و VK یەکسان کار بکەن
-                if (container.requestFullscreen) container.requestFullscreen();
-                else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-                else if (container.msRequestFullscreen) container.msRequestFullscreen();
+                // دروستکردنی دوگمەی فول سکرین
+                const fsBtn = document.createElement('button');
+                fsBtn.className = 'custom-fs-btn';
+                fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
                 
-            } else {
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-                else if (document.msExitFullscreen) document.msExitFullscreen();
-            }
-        };
-        container.appendChild(fsBtn);
-    });
-});
-
-
+                fsBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                        if (container.requestFullscreen) container.requestFullscreen();
+                        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+                    } else {
+                        if (document.exitFullscreen) document.exitFullscreen();
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                    }
+                };
+                container.appendChild(fsBtn);
+            });
+        });
 
         // گەڕانەوە بۆ سەرەوە
         const btt = document.getElementById("backToTop");
         window.onscroll = () => btt.style.display = (window.scrollY > 400) ? "block" : "none";
         btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
     </script>
+
 </body>
 </html>
