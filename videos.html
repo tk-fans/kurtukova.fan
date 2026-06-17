@@ -262,33 +262,41 @@
         }
 
         // --- 2. سیستەمی لۆگۆ و فول سکرین ---
-        document.addEventListener("DOMContentLoaded", () => {
-            const videoContainers = document.querySelectorAll('.video-container');
+        // --- ئەم بەشە لە ناو سکریپتەکەتدا بەمە بگۆڕە ---
+document.addEventListener("DOMContentLoaded", () => {
+    const videoContainers = document.querySelectorAll('.video-container');
+    
+    videoContainers.forEach(container => {
+        // دروستکردنی لۆگۆ
+        const logoText = document.createElement('div');
+        logoText.className = 'video-overlay-text';
+        logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
+        container.appendChild(logoText);
+        
+        // دروستکردنی دوگمەی فول سکرین
+        const fsBtn = document.createElement('button');
+        fsBtn.className = 'custom-fs-btn';
+        fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
+        
+        fsBtn.onclick = (e) => {
+            e.stopPropagation();
+            // دۆزینەوەی ئایفرێمەکەی ناو ئەم کۆنتێنەرە
+            const iframe = container.querySelector('iframe');
             
-            videoContainers.forEach(container => {
-                // دروستکردنی لۆگۆ
-                const logoText = document.createElement('div');
-                logoText.className = 'video-overlay-text';
-                logoText.innerHTML = 'Поклонники<br>Татьяны Куртуковой';
-                container.appendChild(logoText);
-                
-                // دروستکردنی دوگمەی فول سکرین
-                const fsBtn = document.createElement('button');
-                fsBtn.className = 'custom-fs-btn';
-                fsBtn.innerHTML = '<i class="fas fa-expand"></i> Полный экран';
-                
-                fsBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    if (!document.fullscreenElement) {
-                        if (container.requestFullscreen) container.requestFullscreen();
-                        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-                    } else {
-                        if (document.exitFullscreen) document.exitFullscreen();
-                    }
-                };
-                container.appendChild(fsBtn);
-            });
-        });
+            if (iframe) {
+                if (!document.fullscreenElement) {
+                    if (iframe.requestFullscreen) iframe.requestFullscreen();
+                    else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+                    else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
+                } else {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                }
+            }
+        };
+        container.appendChild(fsBtn);
+    });
+});
+
 
         // گەڕانەوە بۆ سەرەوە
         const btt = document.getElementById("backToTop");
