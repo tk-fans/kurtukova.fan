@@ -178,6 +178,47 @@
     pointer-events: none;
     z-index: 10000;
     box-shadow: 0 0 10px #d4af37, 0 0 20px #ff4d4d;
+} 
+
+    /* ڕێکخستنی کارتی ئیدیتەکان بۆ قەبارەی ١:١ */
+.insta-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ناچارکردنی بەشی ڤیدیۆکە کە ببێتە چوارگۆشەی ڕێک */
+.insta-video-container {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* ئەم دێڕە قەبارەکە دەکاتە ١:١ */
+    position: relative;
+}
+
+/* ڕێکخستنی فڕێمی ئینستاگرامەکە لە ناو چوارگۆشەکەدا */
+.insta-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* بەشی ناوی خاوەن ئەکاونتەکە لە خوار ڤیدیۆکە */
+.insta-edit-info {
+    padding: 10px;
+    text-align: center;
+    background: rgba(26, 5, 0, 0.5);
+} 
+
+   .instagram-edits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
 }
     </style>
 </head>
