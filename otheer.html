@@ -129,7 +129,75 @@
             font-size: 1.3rem;
             font-weight: 600;
             transition: 0.3s;
-        }
+        } 
+
+        /* گڕیدی واڵپەیپەرەکان */
+.wallpaper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* کارتی هەر واڵپەیپەرێک */
+.wallpaper-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.wallpaper-card:hover {
+    transform: scale(1.03);
+    border-color: #d4af37;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* وێنەی ناو کارتەکە */
+.wallpaper-img-container {
+    width: 100%;
+    aspect-ratio: 9 / 16; /* گونجاوە بۆ واڵپەیپەری مۆبایل، ئەگەر بۆ کۆمپیوتەر بوو بیکە ١٦/٩ */
+    overflow: hidden;
+}
+
+.wallpaper-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* بەشی زانیاری و دوگمەی داگرتن */
+.wallpaper-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.wallpaper-info h4 {
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #1a0500, #3a0c00);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background: #d4af37;
+    color: #1a0500;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
     /* ڕێکخستنی کارتی ئیدیتەکان بۆ قەبارەی ١:١ */
 .insta-card {
     background: rgba(0, 0, 0, 0.6);
@@ -280,9 +348,37 @@
         </div>
 
         <div id="wallpapers" class="content-section">
-            <h2>Обои</h2>
-            <p>لێرە کۆدی ناوەڕۆکی بەشی واڵپەیپەرەکان دابنێ...</p>
+    <h2>Обои для скачивания</h2>
+    <p>Эксклюзивные обои с Татьяной Куртуковой для вашего телефона</p>
+
+    <div class="wallpaper-grid">
+        
+        <div class="wallpaper-card">
+            <div class="wallpaper-img-container">
+                <img src="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Wallpaper 1">
+            </div>
+            <div class="wallpaper-info">
+                <h4>Золотой Стиль</h4>
+                <a href="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" download="tatyana-wallpaper1" class="download-btn">
+                    <i class="fas fa-download"></i> Скачать
+                </a>
+            </div>
         </div>
+
+        <div class="wallpaper-card">
+            <div class="wallpaper-img-container">
+                <img src="https://i.postimg.cc/mkXzqXXs/Screenshot-2026-03-19-00-41-59-377-com-android-chrome-edit.jpg" alt="Wallpaper 2">
+            </div>
+            <div class="wallpaper-info">
+                <h4>Сценический Образ</h4>
+                <a href="#" download="tatyana-wallpaper2" class="download-btn">
+                    <i class="fas fa-download"></i> Скачать
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
 
         <div id="music" class="content-section">
             <h2>Музыка и плейлисты</h2>
@@ -314,7 +410,7 @@
         </div>
        <div class="insta-card">
             <div class="insta-video-container">
-                <iframe src="https://www.instagram.com/p/Dae1GkLIg_M/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://www.instagram.com/p/DacWPBEIRb0/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
             </div>xSNIyJ
             <div class="insta-edit-info">
                 <h3>сделано: <span class="insta-author">kurtukova.fan</span></h3>
