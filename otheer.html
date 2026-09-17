@@ -132,115 +132,112 @@
         } 
 
         /* گڕیدی واڵپەیپەرەکان */
-.wallpaper-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    padding: 20px 0;
-}
+        .wallpaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
 
-/* کارتی هەر واڵپەیپەرێک */
-.wallpaper-card {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
+        /* کارتی هەر واڵپەیپەرێک */
+        .wallpaper-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
 
-.wallpaper-card:hover {
-    transform: scale(1.03);
-    border-color: #d4af37;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
-}
+        .wallpaper-card:hover {
+            transform: scale(1.03);
+            border-color: #d4af37;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
 
-/* وێنەی ناو کارتەکە */
-.wallpaper-img-container {
-    width: 100%;
-    aspect-ratio: 9 / 16; /* گونجاوە بۆ واڵپەیپەری مۆبایل، ئەگەر بۆ کۆمپیوتەر بوو بیکە ١٦/٩ */
-    overflow: hidden;
-}
+        .wallpaper-img-container {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
+        }
 
-.wallpaper-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .wallpaper-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* بەشی زانیاری و دوگمەی داگرتن */
-.wallpaper-info {
-    padding: 15px;
-    text-align: center;
-}
+        .wallpaper-info {
+            padding: 15px;
+            text-align: center;
+        }
 
-.wallpaper-info h4 {
-    margin: 0 0 10px 0;
-    color: #fff;
-    font-size: 1.1rem;
-}
+        .wallpaper-info h4 {
+            margin: 0 0 10px 0;
+            color: #fff;
+            font-size: 1.1rem;
+        }
 
-.download-btn {
-    display: inline-block;
-    background: linear-gradient(45deg, #1a0500, #3a0c00);
-    color: #d4af37;
-    border: 1px solid #d4af37;
-    padding: 8px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #1a0500, #3a0c00);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-.download-btn:hover {
-    background: #d4af37;
-    color: #1a0500;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-    /* ڕێکخستنی کارتی ئیدیتەکان بۆ قەبارەی ١:١ */
-.insta-card {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
+        .download-btn:hover {
+            background: #d4af37;
+            color: #1a0500;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
 
-/* ناچارکردنی بەشی ڤیدیۆکە کە ببێتە چوارگۆشەی ڕێک */
-.insta-video-container {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* ئەم دێڕە قەبارەکە دەکاتە ١:١ */
-    position: relative;
-}
+        /* ڕێکخستنی کارتی ئیدیتەکان بۆ قەبارەی ١:١ */
+        .insta-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* ڕێکخستنی فڕێمی ئینستاگرامەکە لە ناو چوارگۆشەکەدا */
-.insta-video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+        .insta-video-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            position: relative;
+        }
 
-/* بەشی ناوی خاوەن ئەکاونتەکە لە خوار ڤیدیۆکە */
-.insta-edit-info {
-    padding: 10px;
-    text-align: center;
-    background: rgba(26, 5, 0, 0.5);
-} 
+        .insta-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-   .instagram-edits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
+        .insta-edit-info {
+            padding: 10px;
+            text-align: center;
+            background: rgba(26, 5, 0, 0.5);
+        } 
+
+        .instagram-edits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
         /* --- بەشە شاردراوەکان لە ژێرەوە --- */
         .content-section {
-            display: none; /* لە سەرەتادا هەموو بەشەکان شاردراونەتەوە */
+            display: none;
             background: rgba(0, 0, 0, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 20px;
@@ -251,7 +248,7 @@
         }
 
         .content-section.active-section {
-            display: block; /* تەنها ئەو بەشە پیشان دەدات کە کلیکی لێکراوە */
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -268,7 +265,7 @@
         .back-to-top {
             position: fixed; bottom: 30px; right: 30px; background: rgba(26, 5, 0, 0.8);
             color: #d4af37; border: 1px solid #d4af37; width: 45px; height: 45px;
-            border-radius: 50%; display: none; cursor: pointer;
+            border-radius: 50%; display: none; cursor: pointer; z-index: 1000;
         }
 
         footer { padding: 40px; text-align: center; border-top: 1px solid #d4af37; background: rgba(0,0,0,0.8); margin-top: 100px;}
@@ -348,218 +345,195 @@
         </div>
 
         <div id="wallpapers" class="content-section">
-    <h2>Обои для скачивания</h2>
-    <p>Эксклюзивные обои с Татьяной Куртуковой для вашего телефона</p>
+            <h2>Обои для скачивания</h2>
+            <p>Эксклюзивные обои с Татьяной Куртуковой для вашего телефона</p>
 
-    <div class="wallpaper-grid">
-        
-        <div class="wallpaper-card">
-            <div class="wallpaper-img-container">
-                <img src="https://i.postimg.cc/CMktqrYK/Screenshot-2026-07-08-00-46-00-070-com-instagram-android-edit-1.jpg" alt="Wallpaper 1">
-            </div>
-            <div class="wallpaper-info">
-                <h4>татьяна</h4>
-                <a href="https://i.postimg.cc/ht66mkJ8/f71b651b21456ff3fff090aad6b9c4be-1.jpg" download="tatyana-wallpaper1" class="download-btn">
-                    <i class="fas fa-download"></i> Скачать
-                </a>
+            <div class="wallpaper-grid">
+                
+                <div class="wallpaper-card">
+                    <div class="wallpaper-img-container">
+                        <img src="https://i.postimg.cc/wjvPRb9h/file-000000001a5c8210b9ae19648b1470d9.png" alt="Wallpaper 1">
+                    </div>
+                    <div class="wallpaper-info">
+                        <h4>Сценический Образ</h4>
+                        <a href="https://i.postimg.cc/wjvPRb9h/file-000000001a5c8210b9ae19648b1470d9.png" download="tatyana-wallpaper1" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+
+                <div class="wallpaper-card">
+                    <div class="wallpaper-img-container">
+                        <img src="https://i.postimg.cc/2S6JLXCh/file-0000000039e48210af1fa0477e1878f3.png" alt="Wallpaper 2">
+                    </div>
+                    <div class="wallpaper-info">
+                        <h4>Сценический Образ</h4>
+                        <a href="https://i.postimg.cc/2S6JLXCh/file-0000000039e48210af1fa0477e1878f3.png" download="tatyana-wallpaper2" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+
+                <div class="wallpaper-card">
+                    <div class="wallpaper-img-container">
+                        <img src="https://i.postimg.cc/RZF8JbvM/file-000000003fcc8246868648aa676a344a.png" alt="Wallpaper 3">
+                    </div>
+                    <div class="wallpaper-info">
+                        <h4>Сценический Образ</h4>
+                        <a href="https://i.postimg.cc/RZF8JbvM/file-000000003fcc8246868648aa676a344a.png" download="tatyana-wallpaper3" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+
+                <div class="wallpaper-card">
+                    <div class="wallpaper-img-container">
+                        <img src="https://i.postimg.cc/htjwQ3Kx/file-0000000065f881f4a0aae031571093eb.png" alt="Wallpaper 4">
+                    </div>
+                    <div class="wallpaper-info">
+                        <h4>Сценический Образ</h4>
+                        <a href="https://i.postimg.cc/htjwQ3Kx/file-0000000065f881f4a0aae031571093eb.png" download="tatyana-wallpaper4" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+
+                <div class="wallpaper-card">
+                    <div class="wallpaper-img-container">
+                        <img src="https://i.postimg.cc/QxSwtrZh/file-00000000d0b082109541f98ac5982691.png" alt="Wallpaper 5">
+                    </div>
+                    <div class="wallpaper-info">
+                        <h4>Сценический Образ</h4>
+                        <a href="https://i.postimg.cc/QxSwtrZh/file-00000000d0b082109541f98ac5982691.png" download="tatyana-wallpaper5" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Скачать
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-        فەرموو، ئەمەش کۆدی تەواوی ئەو ٥ وێنە نوێیەیە کە بۆ بەشی واڵپێپەڕەکان (Wallpapers) بە لینکە نوێکان و بە شێوازێکی زۆر ڕێک و پێک ئامادە کراون:
-
-```html
-<div class="wallpaper-card">
-    <div class="wallpaper-img-container">
-        <img src="https://i.postimg.cc/wjvPRb9h/file-000000001a5c8210b9ae19648b1470d9.png" alt="Wallpaper 1">
-    </div>
-    <div class="wallpaper-info">
-        <h4>Сценический Образ</h4>
-        <a href="https://i.postimg.cc/wjvPRb9h/file-000000001a5c8210b9ae19648b1470d9.png" download="tatyana-wallpaper1" class="download-btn" target="_blank">
-            <i class="fas fa-download"></i> Скачать
-        </a>
-    </div>
-</div>
-
-<div class="wallpaper-card">
-    <div class="wallpaper-img-container">
-        <img src="https://i.postimg.cc/2S6JLXCh/file-0000000039e48210af1fa0477e1878f3.png" alt="Wallpaper 2">
-    </div>
-    <div class="wallpaper-info">
-        <h4>Сценический Образ</h4>
-        <a href="https://i.postimg.cc/2S6JLXCh/file-0000000039e48210af1fa0477e1878f3.png" download="tatyana-wallpaper2" class="download-btn" target="_blank">
-            <i class="fas fa-download"></i> Скачать
-        </a>
-    </div>
-</div>
-
-<div class="wallpaper-card">
-    <div class="wallpaper-img-container">
-        <img src="https://i.postimg.cc/RZF8JbvM/file-000000003fcc8246868648aa676a344a.png" alt="Wallpaper 3">
-    </div>
-    <div class="wallpaper-info">
-        <h4>Сценический Образ</h4>
-        <a href="https://i.postimg.cc/RZF8JbvM/file-000000003fcc8246868648aa676a344a.png" download="tatyana-wallpaper3" class="download-btn" target="_blank">
-            <i class="fas fa-download"></i> Скачать
-        </a>
-    </div>
-</div>
-
-<div class="wallpaper-card">
-    <div class="wallpaper-img-container">
-        <img src="https://i.postimg.cc/htjwQ3Kx/file-0000000065f881f4a0aae031571093eb.png" alt="Wallpaper 4">
-    </div>
-    <div class="wallpaper-info">
-        <h4>Сценический Образ</h4>
-        <a href="https://i.postimg.cc/htjwQ3Kx/file-0000000065f881f4a0aae031571093eb.png" download="tatyana-wallpaper4" class="download-btn" target="_blank">
-            <i class="fas fa-download"></i> Скачать
-        </a>
-    </div>
-</div>
-
-<div class="wallpaper-card">
-    <div class="wallpaper-img-container">
-        <img src="https://i.postimg.cc/QxSwtrZh/file-00000000d0b082109541f98ac5982691.png" alt="Wallpaper 5">
-    </div>
-    <div class="wallpaper-info">
-        <h4>Сценический Образ</h4>
-        <a href="https://i.postimg.cc/QxSwtrZh/file-00000000d0b082109541f98ac5982691.png" download="tatyana-wallpaper5" class="download-btn" target="_blank">
-            <i class="fas fa-download"></i> Скачать
-        </a>
-    </div>
-</div>
-
-```
-        
 
         <div id="music" class="content-section">
             <h2>Музыка и плейлисты</h2>
             <p>لێرە کۆدی ناوەڕۆکی بەشی میوزیک و گۆرانییەکان دابنێ...</p>
         </div>
 
-     <div id="edits" class="content-section">
-    <h2>эдиты</h2>
-    <p>Смотрите лучшие эдиты Татьяны из Инстаграма</p>
+        <div id="edits" class="content-section">
+            <h2>эдиты</h2>
+            <p>Смотрите лучшие эдиты Татьяны из Инстаграма</p>
 
-    <div class="instagram-edits-grid">
-        
-        <div class="insta-card">
-        <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DZmtxSNIyJU/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+            <div class="instagram-edits-grid">
+                
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DZmtxSNIyJU/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DZsFEl5ohlB/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/p/DaUtzsyM_LV/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div> 
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DcbejQoo8uh/embed/" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">Tatiyana_kurtukova_fan</span></h3>
+                    </div>
+                </div> 
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DZcwZJnIQja/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DXgV9m8iDzp/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DbnFgb6ohlf/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DavJbSII50A/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DcEHxacsQmp/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/Dbxo9fvu0_r/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
+                    </div>
+                </div>
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DbnCG_Zu_3y/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
+                    </div>
+                </div> 
+
+                <div class="insta-card">
+                    <div class="insta-video-container">
+                        <iframe src="https://www.instagram.com/reel/DafhkPRuKym/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="insta-edit-info">
+                        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-        <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-        </div>
-        </div>
-
-        
-
-        <div class="insta-card">
-        <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DZsFEl5ohlB/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-        </div>
-        </div>
-
-
-        
-        <div class="insta-card">
-        <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/p/DaUtzsyM_LV/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-        </div>
-        </div> 
-
-        
-         
-        <div class="insta-card">
-        <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DcbejQoo8uh/embed/" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">Tatiyana_kurtukova_fan</span></h3>
-        </div>
-        </div> 
-        <!-- بەشی یەکەم: ts_makeeva_fan (٤ ئێدیت) -->
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DZcwZJnIQja/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-    </div>
-</div>
-
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DXgV9m8iDzp/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-    </div>
-</div>
-
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DbnFgb6ohlf/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-    </div>
-</div>
-
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DavJbSII50A/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">ts_makeeva_fan</span></h3>
-    </div>
-</div>
-
-
-<!-- بەشی سێیەم: egozafolk_ef (٣ ئێدیت) -->
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DcEHxacsQmp/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
-    </div>
-</div>
-
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/Dbxo9fvu0_r/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
-    </div>
-</div>
-
-<div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DbnCG_Zu_3y/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
-    </div>
-</div> 
-    <div class="insta-card">
-    <div class="insta-video-container">
-        <iframe src="https://www.instagram.com/reel/DafhkPRuKym/embed/" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="insta-edit-info">
-        <h3>сделано: <span class="insta-author">egozafolk_ef</span></h3>
-    </div>
-</div>
-        
-    </div>
-
-
 
     </div>
 
@@ -570,35 +544,25 @@
     </footer>
 
     <script>
-        // مینیو
         function toggleMenu() {
             document.getElementById("sideMenu").classList.toggle("active");
             document.getElementById("menuOverlay").classList.toggle("active");
         }
 
-        // سکریپتی گۆڕینی بەشەکان بەبێ گۆڕینی لاپەڕە
         function showContent(sectionId, cardElement) {
-            // شاردنەوەی هەموو بەشەکان
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active-section');
             });
 
-            // لادانی ستایلی ئەکتیڤ لەسەر هەموو چوارگۆشەکان
             document.querySelectorAll('.hub-card').forEach(card => {
                 card.classList.remove('active-card');
             });
 
-            // پیشاندانی بەشە دیاریکراوەکە
             document.getElementById(sectionId).classList.add('active-section');
-            
-            // هێشتنەوەی ستایلی چوارگۆشە کلیک لێکراوەکە بە ئەکتیڤی
             cardElement.classList.add('active-card');
-
-            // هێنانە خوارەوەی شاشەکە بۆ سەر بەشە نوێیەکە بە نەرمی
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // گەڕانەوە بۆ سەرەوە
         const btt = document.getElementById("backToTop");
         window.onscroll = () => btt.style.display = (window.scrollY > 400) ? "block" : "none";
         btt.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
