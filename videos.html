@@ -136,9 +136,7 @@
                 setTimeout(() => { loader.style.display = "none"; }, 500);
             }
         }
-        // چاوەڕێی ڤیدیۆکان مەکە، هەر کە پەیکەری سایتەکە ئامادە بوو لۆدینگەکە لابە
         document.addEventListener("DOMContentLoaded", hideLoader);
-        // وەک زەمانەت، دوای ٢ چرکە هەر لایبەرە
         setTimeout(hideLoader, 2000);
     </script>
 </head>
@@ -168,7 +166,7 @@
 
     <div class="main-content">
         <h1>Видео</h1> 
-        <p id="video-count">Всего видео: 40</p>
+        <p id="video-count">Всего видео: 0</p>
 
         <input type="text" id="videoSearch" class="search-box" placeholder="Поиск видео..." onkeyup="applyFilters()">
 
@@ -292,6 +290,9 @@
                 };
                 container.appendChild(fsBtn);
             });
+
+            // ژماردنی سەرەتایی ڤیدیۆکان لە کاتی لۆدبوونی پەڕەکەدا
+            updateVideoCount();
         });
 
         // گەڕانەوە بۆ سەرەوە
